@@ -10,14 +10,16 @@
 
     <Button
         android:id="@+id/roundButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/iniciosesion"
+        android:layout_width="170dp"
+        android:layout_height="68dp"
         android:backgroundTint="@color/naranja"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/iniciosesion"
+        android:textColor="@color/purpledark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 
