@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FastBrain</string>
+    <string name="iniciosesion">Inciar Sesión</string>
 </resources>
