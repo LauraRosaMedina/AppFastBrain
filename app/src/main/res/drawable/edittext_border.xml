@@ -3,5 +3,6 @@
     <stroke
         android:width="2dp"
         android:color="@color/malva" /> <!-- Borde malva -->
+    
     <corners android:radius="8dp" /> <!-- Esquinas redondeadas -->
 </shape>

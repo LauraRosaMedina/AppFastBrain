@@ -44,33 +44,35 @@
         android:background="@drawable/edittext_border"
         android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/email"
-        android:hintTextColor="@color/white"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColor="@color/white"
+        android:textColorHint="@color/malva"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/passwordField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="27dp" />
+        app:layout_constraintVertical_bias="0.975"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/passwordField"
         android:layout_width="356dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/edittext_border"
         android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/contraseña"
-        android:hintTextColor="@color/white"
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColor="@color/white"
+        android:textColorHint="@color/malva"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/roundButton2"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="27dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/roundButton2"
@@ -84,7 +86,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/googleLoginButton"
-        tools:layout_editor_absoluteX="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <Button
