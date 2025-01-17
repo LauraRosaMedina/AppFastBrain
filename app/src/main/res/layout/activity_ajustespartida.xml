@@ -5,6 +5,47 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
     tools:context=".ajustespartida">
+
+    <LinearLayout
+        android:id="@+id/cuadro_ajustes"
+        android:layout_width="364dp"
+        android:layout_height="70dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/cuadro_transparente"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/juegaconamigos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/juegaconamigos"
+        android:layout_width="300dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:textStyle="bold"
+        android:text="@string/juegaamigos"
+        android:textAlignment="center"
+        android:textColor="@color/malva"
+        android:textSize="35sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/iconoajustes"
+        android:layout_width="195dp"
+        android:layout_height="182dp"
+        android:contentDescription="@string/iconoajustes"
+        android:src="@drawable/logopaginacarga"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/juegaconamigos" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
