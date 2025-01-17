@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">FastBrain</string>
-    <string name="iniciosesion">Inciar Sesión</string>
+    <string name="iniciosesion">Iniciar Sesión</string>
     <string name="registrarse">Regístrate</string>
     <string name="google">Inicia sesión con Google</string>
     <string name="terminos">Al inciar sesión, aceptas nuestra política de privacidad</string>
@@ -10,7 +10,11 @@
     <string name="registro">Registrate</string>
     <string name="contraseña">Contraseña</string>
     <string name="email">Introduce tu correo</string>
-    <string name="pagina_registro">¡Registrate para comenzar a jugar!</string>
+    <string name="pagina_registro">¡Registrate!</string>
+
+    <!--Inicio Sesión-->
+    <string name="pagina_iniciosesion">Iniciar Sesión</string>
+
 
 
 
