@@ -3,5 +3,7 @@
     <string name="iniciosesion">Inciar Sesión</string>
     <string name="registrarse">Regístrate</string>
     <string name="google">Inicia sesión con Google</string>
-    <string name="terminos">Al inciar sesión, aceptas nuestras políticas de privacidad</string>
+    <string name="terminos">Al inciar sesión, aceptas nuestra política de privacidad</string>
+    <string name="logo">logo de página de carga</string>
+
 </resources>
