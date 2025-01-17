@@ -5,6 +5,13 @@
     <string name="google">Inicia sesión con Google</string>
     <string name="terminos">Al inciar sesión, aceptas nuestra política de privacidad</string>
     <string name="logo">logo de página de carga</string>
+    <string name="crearsala">logo para crear sala</string>
+    <string name="botoncrearsala">botón para crear sala</string>
+    <string name="crear_sala">Crear sala</string>
+    <string name="play">Icono de Play</string>
+    <string name="iconounirsesala">Icono para Unirse a sala</string>
+    <string name="botonunirsesala">Botón para unirse a la sala</string>
+    <string name="textounirsesala">Unirse a sala</string>
 
     <!--Resgistro-->
     <string name="registro">Registrate</string>

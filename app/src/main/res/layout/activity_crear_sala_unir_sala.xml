@@ -6,5 +6,151 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/animated_background"
-    tools:context=".crearSala_unirSala">
+    tools:context=".crearSala_unirSala"
+    tools:ignore="ExtraText">
+
+
+    <LinearLayout
+        android:id="@+id/cuadro_crear_sala"
+        android:layout_width="322dp"
+        android:layout_height="278dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/cuadro_transparente"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.142">
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/icono_videogame"
+        android:layout_width="169dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/crearsala"
+        android:src="@drawable/videogame"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro_crear_sala"
+        app:layout_constraintStart_toStartOf="@+id/cuadro_crear_sala"
+        app:layout_constraintTop_toTopOf="@+id/cuadro_crear_sala" />
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/animated_background"
+        tools:context=".crearSala_unirSala"
+        tools:ignore="DuplicateIds,ExtraText">
+
+        <!-- Cuadro transparente para el botón -->
+        <LinearLayout
+            android:id="@+id/cuadro_crear_sala"
+            android:layout_width="322dp"
+            android:layout_height="278dp"
+            android:layout_margin="16dp"
+            android:background="@drawable/cuadro_transparente"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.142">
+
+        </LinearLayout>
+
+        <!-- Ícono del videojuego -->
+        <ImageView
+            android:id="@+id/icono_videogame"
+            android:layout_width="169dp"
+            android:layout_height="117dp"
+            android:layout_marginTop="16dp"
+            android:contentDescription="@string/crearsala"
+            android:src="@drawable/videogame"
+            app:layout_constraintEnd_toEndOf="@+id/cuadro_crear_sala"
+            app:layout_constraintStart_toStartOf="@+id/cuadro_crear_sala"
+            app:layout_constraintTop_toTopOf="@+id/cuadro_crear_sala"
+            tools:ignore="DuplicateIds" />
+
+        <!-- Botón con ícono a la izquierda del texto -->
+        <Button
+            android:id="@+id/botoncrearsala"
+            android:layout_width="230dp"
+            android:layout_height="65dp"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/botoncrearsala"
+            android:drawableLeft="@drawable/iconoplay"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="@string/crear_sala"
+            android:textColor="@color/purpledark"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadro_crear_sala"
+            app:layout_constraintEnd_toEndOf="@+id/cuadro_crear_sala"
+            app:layout_constraintStart_toStartOf="@+id/cuadro_crear_sala"
+            app:layout_constraintTop_toBottomOf="@+id/icono_videogame" /> <!-- Ícono a la izquierda del texto -->
+            android:drawablePadding="8dp" <!-- Espacio entre el ícono y el texto -->
+            app:layout_constraintBottom_toBottomOf="@+id/cuadro_crear_sala"
+            app:layout_constraintEnd_toEndOf="@+id/cuadro_crear_sala"
+            app:layout_constraintStart_toStartOf="@+id/cuadro_crear_sala"
+            app:layout_constraintTop_toBottomOf="@+id/icono_videogame" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/cuadro_crear_sala_duplicado"
+        android:layout_width="322dp"
+        android:layout_height="278dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/cuadro_transparente"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/cuadro_crear_sala"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
+    <!-- Ícono del videojuego en el cuadro duplicado -->
+    <ImageView
+        android:id="@+id/icono_videogame_duplicado"
+        android:layout_width="169dp"
+        android:layout_height="117dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/iconounirsesala"
+        android:src="@drawable/iconounirsala"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro_crear_sala_duplicado"
+        app:layout_constraintStart_toStartOf="@+id/cuadro_crear_sala_duplicado"
+        app:layout_constraintTop_toTopOf="@+id/cuadro_crear_sala_duplicado" />
+
+    <!-- Botón con ícono a la izquierda del texto en el cuadro duplicado -->
+    <Button
+        android:id="@+id/botoncrearsala_duplicado"
+        android:layout_width="230dp"
+        android:layout_height="65dp"
+        android:backgroundTint="@color/white"
+        android:contentDescription="@string/botonunirsesala"
+        android:drawableLeft="@drawable/iconoplay"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/textounirsesala"
+        android:textColor="@color/purpledark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:drawablePadding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/cuadro_crear_sala_duplicado"
+        app:layout_constraintEnd_toEndOf="@+id/cuadro_crear_sala_duplicado"
+        app:layout_constraintStart_toStartOf="@+id/cuadro_crear_sala_duplicado"
+        app:layout_constraintTop_toBottomOf="@+id/icono_videogame_duplicado" />
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
