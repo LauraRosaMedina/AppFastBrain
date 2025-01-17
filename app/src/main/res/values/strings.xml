@@ -13,6 +13,8 @@
     <string name="botonunirsesala">Botón para unirse a la sala</string>
     <string name="textounirsesala">Unirse a sala</string>
     <string name="textocodigo">CÓDIGO</string>
+    <string name="juegaamigos">Juega con amigos</string>
+    <string name="iconoajustes">Icono de la página de ajustes</string>
 
     <!--Resgistro-->
     <string name="registro">Registrate</string>
