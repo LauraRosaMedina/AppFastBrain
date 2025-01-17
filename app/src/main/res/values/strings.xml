@@ -6,4 +6,13 @@
     <string name="terminos">Al inciar sesión, aceptas nuestra política de privacidad</string>
     <string name="logo">logo de página de carga</string>
 
+    <!--Resgistro-->
+    <string name="registro">Registrate</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="email">Introduce tu correo</string>
+    <string name="pagina_registro">¡Registrate para comenzar a jugar!</string>
+
+
+
+
 </resources>
