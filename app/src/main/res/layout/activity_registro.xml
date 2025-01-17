@@ -41,17 +41,18 @@
         android:layout_width="356dp"
         android:layout_height="55dp"
         android:background="@drawable/edittext_border"
-        android:hint="@string/email"
         android:fontFamily="sans-serif-smallcaps"
-        android:hintTextColor="@color/white"
+        android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColor="@color/white"
+        android:textColorHint="@color/malva"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/passwordField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.974"
-        tools:layout_editor_absoluteX="27dp"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -60,15 +61,16 @@
         android:layout_height="55dp"
         android:layout_marginBottom="36dp"
         android:background="@drawable/edittext_border"
-        android:hint="@string/contraseña"
         android:fontFamily="sans-serif-smallcaps"
-        android:hintTextColor="@color/white"
+        android:hint="@string/contraseña"
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColor="@color/white"
+        android:textColorHint="@color/malva"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/registerButton"
-        tools:layout_editor_absoluteX="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
     <Button
