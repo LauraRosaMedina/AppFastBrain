@@ -38,7 +38,6 @@
         app:layout_constraintStart_toStartOf="@+id/cuadro_crear_sala"
         app:layout_constraintTop_toTopOf="@+id/cuadro_crear_sala" />
 
-    <?xml version="1.0" encoding="utf-8"?>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
@@ -94,27 +93,52 @@
             app:layout_constraintBottom_toBottomOf="@+id/cuadro_crear_sala"
             app:layout_constraintEnd_toEndOf="@+id/cuadro_crear_sala"
             app:layout_constraintStart_toStartOf="@+id/cuadro_crear_sala"
-            app:layout_constraintTop_toBottomOf="@+id/icono_videogame" /> <!-- Ícono a la izquierda del texto -->
-            android:drawablePadding="8dp" <!-- Espacio entre el ícono y el texto -->
-            app:layout_constraintBottom_toBottomOf="@+id/cuadro_crear_sala"
-            app:layout_constraintEnd_toEndOf="@+id/cuadro_crear_sala"
-            app:layout_constraintStart_toStartOf="@+id/cuadro_crear_sala"
             app:layout_constraintTop_toBottomOf="@+id/icono_videogame" />
+
+        <EditText
+            android:id="@+id/edittextsala"
+            android:layout_width="170dp"
+            android:layout_height="60dp"
+            android:drawablePadding="8dp"
+            android:background="@drawable/edittext_border"
+            android:hint="@string/textocodigo"
+            android:textColor="@color/black"
+            android:textColorHint="@color/malva"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cuadro_crear_sala"
+            app:layout_constraintVertical_bias="0.554"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/logoSala"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="288dp"
+            android:src="@drawable/letraslogo"
+            app:layout_constraintBottom_toBottomOf="@+id/cuadro_crear_sala"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/cuadro_crear_sala_duplicado"
-        android:layout_width="322dp"
-        android:layout_height="278dp"
+        android:layout_width="323dp"
+        android:layout_height="328dp"
         android:layout_margin="16dp"
         android:background="@drawable/cuadro_transparente"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/cuadro_crear_sala"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cuadro_crear_sala">
 
     </LinearLayout>
 
@@ -130,6 +154,7 @@
         app:layout_constraintStart_toStartOf="@+id/cuadro_crear_sala_duplicado"
         app:layout_constraintTop_toTopOf="@+id/cuadro_crear_sala_duplicado" />
 
+
     <!-- Botón con ícono a la izquierda del texto en el cuadro duplicado -->
     <Button
         android:id="@+id/botoncrearsala_duplicado"
@@ -144,10 +169,12 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:drawablePadding="8dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/cuadro_crear_sala_duplicado"
         app:layout_constraintEnd_toEndOf="@+id/cuadro_crear_sala_duplicado"
         app:layout_constraintStart_toStartOf="@+id/cuadro_crear_sala_duplicado"
-        app:layout_constraintTop_toBottomOf="@+id/icono_videogame_duplicado" />
+         />
+
 
 
 

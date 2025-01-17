@@ -12,6 +12,7 @@
     <string name="iconounirsesala">Icono para Unirse a sala</string>
     <string name="botonunirsesala">Botón para unirse a la sala</string>
     <string name="textounirsesala">Unirse a sala</string>
+    <string name="textocodigo">CÓDIGO</string>
 
     <!--Resgistro-->
     <string name="registro">Registrate</string>
