@@ -8,17 +8,17 @@
     android:background="@drawable/background_gradient"
     tools:context=".ajustespartida">
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:id="@+id/cuadro_ajustes"
-        android:layout_width="364dp"
-        android:layout_height="70dp"
+        android:layout_width="368dp"
+        android:layout_height="62dp"
         android:layout_margin="16dp"
-        android:background="@drawable/cuadro_transparente"
+        android:background="@drawable/cuadro_transparente_naranja"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/juegaconamigos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" />-->
 
     <TextView
         android:id="@+id/juegaconamigos"
@@ -46,6 +46,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/juegaconamigos" />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
