@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#50FFA500" /> <!-- Blanco con transparencia -->
+    <solid android:color="#50E9C2F2" />
     <corners android:radius="16dp" /> <!-- Bordes redondeados -->
     <stroke
         android:width="2dp"
-        android:color="#80FFA500" /> <!-- Borde semitransparente -->
+        android:color="#80E9C2F2" /> <!-- Borde semitransparente -->
 </shape>
