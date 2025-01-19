@@ -118,7 +118,7 @@
             android:layout_width="300dp"
             android:layout_height="60dp"
             android:layout_marginBottom="288dp"
-            android:src="@drawable/letraslogo"
+            android:src="@drawable/letrasfastbrain"
             app:layout_constraintBottom_toBottomOf="@+id/cuadro_crear_sala"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.495"
