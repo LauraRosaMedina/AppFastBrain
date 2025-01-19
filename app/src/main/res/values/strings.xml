@@ -13,8 +13,20 @@
     <string name="botonunirsesala">Botón para unirse a la sala</string>
     <string name="textounirsesala">Unirse a sala</string>
     <string name="textocodigo">CÓDIGO</string>
-    <string name="juegaamigos">Juega con amigos</string>
+    <string name="juegaamigos">Configuración del juego</string>
     <string name="iconoajustes">Icono de la página de ajustes</string>
+    <string name="dificultad">Dificultad</string>
+    <string name="dificultad_alta">Alta</string>
+    <string name="dificultad_media">Media</string>
+    <string name="dificultad_baja">Baja</string>
+    <string name="idioma">Idioma de las preguntas</string>
+    <string name="español">Español</string>
+    <string name="ingles">Inglés</string>
+    <string name="numero_jugadores">Número de jugadores</string>
+    <string name="signo_mas">+</string>
+    <string name="numero_uno">1</string>
+    <string name="signo_menos">-</string>
+    <string name="codigo">CREAR CÓDIGO</string>
 
     <!--Resgistro-->
     <string name="registro">Registrate</string>

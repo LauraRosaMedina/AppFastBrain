@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Estado presionado -->
+    <item android:state_pressed="true">
+        <shape>
+            <corners android:topLeftRadius="16dp" android:bottomLeftRadius="16dp" />
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+    <!-- Estado de enfoque (hover) -->
+    <item android:state_focused="true">
+        <shape>
+            <corners android:topLeftRadius="16dp" android:bottomLeftRadius="16dp" />
+            <solid android:color="@color/white" />
+        </shape>
+    </item>
+    <!-- Estado normal -->
+    <item>
+        <shape>
+            <corners android:topLeftRadius="16dp" android:bottomLeftRadius="16dp" />
+            <solid android:color="@color/malva" />
+        </shape>
+    </item>
+</selector>
