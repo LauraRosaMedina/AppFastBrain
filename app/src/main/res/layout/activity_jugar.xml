@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,19 +6,67 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient"
-    tools:context=".registro">
+    tools:context=".activity_jugar">
+
+    <TextView
+        android:id="@+id/configuracion_juego"
+        android:layout_width="331dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/jugar"
+        android:textAlignment="center"
+        android:textColor="@color/malva"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.638" />
 
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="282dp"
-        android:layout_height="249dp"
+        android:layout_width="413dp"
+        android:layout_height="60dp"
         android:contentDescription="@string/logo"
-        android:src="@drawable/icono"
+        android:src="@drawable/letrasfastbrain"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.126" />
+        app:layout_constraintVertical_bias="0.149" />
+
+    <FrameLayout
+        android:id="@+id/diceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoImage"
+        android:layout_marginTop="200dp">
+
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/dice2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="end|center_vertical"
+        android:contentDescription="@string/dado_2"
+        android:src="@drawable/dado2"
+        tools:layout_editor_absoluteX="216dp"
+        tools:layout_editor_absoluteY="585dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/dice1"
+        android:layout_width="77dp"
+        android:layout_height="81dp"
+        android:layout_gravity="start|center_vertical"
+        android:contentDescription="@string/dado_1"
+        android:src="@drawable/dado1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="544dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

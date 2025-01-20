@@ -13,6 +13,8 @@
     <string name="botonunirsesala">Botón para unirse a la sala</string>
     <string name="textounirsesala">Unirse a sala</string>
     <string name="textocodigo">CÓDIGO</string>
+    <string name="jugar">¡Comienza la partida!</string>
+
 
     <!--Resgistro-->
     <string name="registro">Registrate</string>
@@ -22,9 +24,8 @@
 
     <!--Inicio Sesión-->
     <string name="pagina_iniciosesion">Iniciar Sesión</string>
-
-
-
+    <string name="dado_1">Dado 1</string>
+    <string name="dado_2">Dado 2</string>
 
 
 </resources>
