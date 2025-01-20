@@ -42,6 +42,16 @@
     <string name="dado_1">Dado 1</string>
     <string name="dado_2">Dado 2</string>
 
+    <!--Perfil-->
+    <string name="cambiar_contrasena">Cambiar contraseña</string>
+    <string name="editar_perfil">Editar Perfil</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="notificacioines">Notificaciones</string>
+    <string name="perfil">Perfil</string>
+
+
+
+
 
 
 </resources>
