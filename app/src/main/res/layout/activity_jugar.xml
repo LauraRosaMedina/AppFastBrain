@@ -12,7 +12,7 @@
         android:id="@+id/configuracion_juego"
         android:layout_width="331dp"
         android:layout_height="38dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="128dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/jugar"
         android:textAlignment="center"
@@ -21,8 +21,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/logoImage"
@@ -32,9 +31,10 @@
         android:src="@drawable/letrasfastbrain"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.149" />
+        app:layout_constraintVertical_bias="0.044" />
 
     <FrameLayout
         android:id="@+id/diceButton"
@@ -54,19 +54,21 @@
         android:layout_gravity="end|center_vertical"
         android:contentDescription="@string/dado_2"
         android:src="@drawable/dado2"
+        tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="216dp"
-        tools:layout_editor_absoluteY="585dp"
-        tools:ignore="MissingConstraints" />
+        tools:layout_editor_absoluteY="584dp" />
 
     <ImageButton
         android:id="@+id/dice1"
-        android:layout_width="77dp"
-        android:layout_height="81dp"
+        android:layout_width="87dp"
+        android:layout_height="80dp"
         android:layout_gravity="start|center_vertical"
+        android:backgroundTint="@null"
         android:contentDescription="@string/dado_1"
+        android:scaleType="center"
         android:src="@drawable/dado1"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="544dp" />
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="541dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
