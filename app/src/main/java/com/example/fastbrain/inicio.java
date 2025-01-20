@@ -26,11 +26,16 @@ public class inicio extends AppCompatActivity {
 
         // Obtén la referencia del botón
         Button iniciarSesionButton = findViewById(R.id.roundButton);
-
+        Button registrarse = findViewById(R.id.roundButton2);
         // Configura el evento de clic en el botón
         iniciarSesionButton.setOnClickListener(v -> {
             // Crea un Intent para ir a activity_iniciarsesion
             Intent intent = new Intent(inicio.this, activity_iniciarsesion.class);
+            startActivity(intent);
+        });
+
+        registrarse.setOnClickListener(view -> {
+            Intent intent = new Intent(inicio.this, activity_registrarse.class);
             startActivity(intent);
         });
 
