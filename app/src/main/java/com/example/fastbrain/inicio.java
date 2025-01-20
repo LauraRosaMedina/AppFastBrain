@@ -1,5 +1,6 @@
 package com.example.fastbrain;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -22,5 +23,16 @@ public class inicio extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Obtén la referencia del botón
+        Button iniciarSesionButton = findViewById(R.id.roundButton);
+
+        // Configura el evento de clic en el botón
+        iniciarSesionButton.setOnClickListener(v -> {
+            // Crea un Intent para ir a activity_iniciarsesion
+            Intent intent = new Intent(inicio.this, activity_iniciarsesion.class);
+            startActivity(intent);
+        });
+
     }
 }

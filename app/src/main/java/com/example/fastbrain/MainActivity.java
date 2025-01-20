@@ -1,7 +1,9 @@
 
 package com.example.fastbrain;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,16 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        // Usar un Handler para cambiar de actividad después de 3 segundos (3000 ms)
+        new Handler().postDelayed(() -> {
+            // Inicia la actividad de inicio de sesión
+            Intent intent = new Intent(MainActivity.this, inicio.class);
+            startActivity(intent);
+            // Finaliza la actividad actual para que no regrese al presionar "atrás"
+            finish();
+        }, 3000);
     }
 
 
