@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -8,7 +9,7 @@
     android:background="@color/white"
     tools:context=".activity_perfil">
 
-
+    <!-- Imagen del perfil -->
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="196dp"
@@ -21,6 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.126" />
 
+    <!-- Título del perfil -->
     <TextView
         android:id="@+id/loginTextView"
         android:layout_width="wrap_content"
@@ -35,10 +37,10 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logoImage"
-        app:layout_constraintVertical_bias="0.137"
+        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
-
+    <!-- Botón para editar perfil -->
     <Button
         android:id="@+id/roundButton"
         android:layout_width="356dp"
@@ -56,6 +58,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.547" />
 
+    <!-- Botón para cambiar contraseña -->
     <Button
         android:id="@+id/roundButton2"
         android:layout_width="356dp"
@@ -73,6 +76,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.669" />
 
+    <!-- Botón para cerrar sesión -->
     <Button
         android:id="@+id/roundButton3"
         android:layout_width="356dp"
@@ -90,21 +94,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.791" />
 
+    <!-- Switch para notificaciones -->
     <Switch
         android:id="@+id/switch_example"
-        android:layout_width="173dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="34dp"
+        android:layout_width="177dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="16dp"
         android:text="@string/notificacioines"
         android:textColor="@color/purpledark"
         android:textSize="18sp"
         android:thumbTint="@color/naranja"
         android:trackTint="@color/purple"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/roundButton3"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
