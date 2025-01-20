@@ -5,6 +5,20 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".sala_espera">
+    tools:context=".sala_espera"
+    android:background="@drawable/background_gradient">
+
+
+    <ImageView
+        android:id="@+id/logo_carga"
+        android:layout_width="191dp"
+        android:layout_height="173dp"
+        android:layout_marginTop="68dp"
+        android:src="@drawable/logopaginacarga"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
