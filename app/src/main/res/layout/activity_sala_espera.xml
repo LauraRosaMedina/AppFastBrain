@@ -11,17 +11,29 @@
 
     <ImageView
         android:id="@+id/logo_carga"
-        android:layout_width="191dp"
-        android:layout_height="173dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="214dp"
+        android:layout_height="195dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/logopaginacarga"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
+    <TextView
+        android:id="@+id/texto_loading"
+        android:layout_width="249dp"
+        android:layout_height="47dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/loading"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logo_carga"
+        app:layout_constraintVertical_bias="0.081" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,6 +30,7 @@
     <string name="signo_menos">-</string>
     <string name="codigo">CREAR CÓDIGO</string>
     <string name="boton_perfil">botón para acceder al perfil del usuario</string>
+    <string name="loading">Loading...</string>
 
     <!--Resgistro-->
     <string name="registro">Registrate</string>
