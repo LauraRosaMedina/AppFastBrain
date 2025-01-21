@@ -100,7 +100,7 @@
         android:layout_width="177dp"
         android:layout_height="52dp"
         android:layout_marginTop="16dp"
-        android:text="@string/notificacioines"
+        android:text="@string/notificaciones"
         android:textColor="@color/purpledark"
         android:textSize="18sp"
         android:thumbTint="@color/naranja"

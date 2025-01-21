@@ -81,7 +81,7 @@
         android:layout_marginBottom="4dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/registrarse"
+        android:text="@string/iniciosesion"
         android:textColor="@color/purpledark"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -106,5 +106,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.883" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

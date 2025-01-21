@@ -32,7 +32,7 @@
     <string name="boton_perfil">botón para acceder al perfil del usuario</string>
     <string name="loading">Loading...</string>
 
-    <!--Resgistro-->
+    <!--Registro-->
     <string name="registro">Registrate</string>
     <string name="contraseña">Contraseña</string>
     <string name="email">Introduce tu correo</string>
@@ -49,6 +49,6 @@
     <string name="cerrar_sesion">Cerrar Sesión</string>
     <string name="notificaciones">Notificaciones</string>
     <string name="perfil">Perfil</string>
-    <!--Prueba-->
+    <!--Prueba1-->
 
 </resources>
