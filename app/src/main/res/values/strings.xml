@@ -40,8 +40,10 @@
 
     <!--Inicio Sesión-->
     <string name="pagina_iniciosesion">Iniciar Sesión</string>
+    <string name="volver">Volver</string>
     <string name="dado_1">Dado 1</string>
     <string name="dado_2">Dado 2</string>
+
 
     <!--Perfil-->
     <string name="cambiar_contrasena">Cambiar contraseña</string>

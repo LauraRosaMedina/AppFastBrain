@@ -51,6 +51,7 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/passwordField"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.975"
@@ -60,7 +61,7 @@
         android:id="@+id/passwordField"
         android:layout_width="356dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="64dp"
         android:background="@drawable/edittext_border"
         android:fontFamily="sans-serif-smallcaps"
         android:hint="@string/contraseña"
@@ -71,6 +72,7 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/roundButton2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -78,7 +80,7 @@
         android:id="@+id/roundButton2"
         android:layout_width="356dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/iniciosesion"
@@ -87,6 +89,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/googleLoginButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -104,8 +107,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
+        app:layout_constraintTop_toBottomOf="@+id/logoImage"
+        app:layout_constraintVertical_bias="0.822" />
 
+    <ImageButton
+        android:id="@+id/button_reset"
+        android:layout_width="73dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="24dp"
+        android:background="@null"
+        android:contentDescription="@string/volver"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/googleLoginButton"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
