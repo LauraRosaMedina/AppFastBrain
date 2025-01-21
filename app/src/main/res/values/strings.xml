@@ -1,3 +1,56 @@
 <resources>
     <string name="app_name">FastBrain</string>
+    <string name="iniciosesion">Iniciar Sesión</string>
+    <string name="registrarse">Regístrate</string>
+    <string name="google">Inicia sesión con Google</string>
+    <string name="terminos">Al inciar sesión, aceptas nuestra política de privacidad</string>
+    <string name="logo">logo de página de carga</string>
+    <string name="crearsala">logo para crear sala</string>
+    <string name="botoncrearsala">botón para crear sala</string>
+    <string name="crear_sala">Crear sala</string>
+    <string name="play">Icono de Play</string>
+    <string name="iconounirsesala">Icono para Unirse a sala</string>
+    <string name="botonunirsesala">Botón para unirse a la sala</string>
+    <string name="textounirsesala">Unirse a sala</string>
+    <string name="textocodigo">CÓDIGO</string>
+    <string name="jugar">¡Comienza la partida!</string>
+
+    <string name="juegaamigos">Configuración del juego</string>
+    <string name="iconoajustes">Icono de la página de ajustes</string>
+    <string name="dificultad">Dificultad</string>
+    <string name="dificultad_alta">Alta</string>
+    <string name="dificultad_media">Media</string>
+    <string name="dificultad_baja">Baja</string>
+    <string name="idioma">Idioma de las preguntas</string>
+    <string name="español">Español</string>
+    <string name="ingles">Inglés</string>
+    <string name="numero_jugadores">Número de jugadores</string>
+    <string name="signo_mas">+</string>
+    <string name="numero_uno">1</string>
+    <string name="signo_menos">-</string>
+    <string name="codigo">CREAR CÓDIGO</string>
+    <string name="boton_perfil">botón para acceder al perfil del usuario</string>
+    <string name="loading">Loading...</string>
+
+    <!--Registro-->
+    <string name="registro">Registrate</string>
+    <string name="contraseña">Contraseña</string>
+    <string name="email">Introduce tu correo</string>
+    <string name="pagina_registro">¡Registrate!</string>
+
+    <!--Inicio Sesión-->
+    <string name="pagina_iniciosesion">Iniciar Sesión</string>
+    <string name="volver">Volver</string>
+    <string name="dado_1">Dado 1</string>
+    <string name="dado_2">Dado 2</string>
+
+
+    <!--Perfil-->
+    <string name="cambiar_contrasena">Cambiar contraseña</string>
+    <string name="cambiar_usuario">Cambiar Usuario</string>
+    <string name="cerrar_sesion">Cerrar Sesión</string>
+    <string name="notificaciones">Notificaciones</string>
+    <string name="perfil">Perfil</string>
+    <!--Prueba1-->
+
 </resources>

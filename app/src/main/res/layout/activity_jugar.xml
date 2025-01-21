@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registerPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    tools:context=".activity_jugar">
+
+
+    <ImageButton
+        android:id="@+id/boton_perfil"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="652dp"
+        android:background="@drawable/background_circle"
+        android:backgroundTint="@null"
+        android:contentDescription="@string/boton_perfil"
+        android:scaleType="centerInside"
+        android:src="@drawable/icono_perfil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.955"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/configuracion_juego"
+        android:layout_width="331dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="128dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/jugar"
+        android:textAlignment="center"
+        android:textColor="@color/malva"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/cuadrojugar"
+        android:layout_width="322dp"
+        android:layout_height="278dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/cuadro_transparente"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoImage"
+        app:layout_constraintVertical_bias="0.427" />
+
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="413dp"
+        android:layout_height="60dp"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/letrasfastbrain"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <FrameLayout
+        android:id="@+id/diceButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logoImage"
+        android:layout_marginTop="200dp">
+
+    </FrameLayout>
+
+    <ImageButton
+        android:id="@+id/dice2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="end|center_vertical"
+        android:background="@null"
+        android:contentDescription="@string/dado_2"
+        android:src="@drawable/dado2"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="144dp"
+        tools:layout_editor_absoluteY="578dp" />
+
+    <ImageButton
+        android:id="@+id/dice1"
+        android:layout_width="87dp"
+        android:layout_height="80dp"
+        android:layout_gravity="start|center_vertical"
+        android:background="@null"
+        android:backgroundTint="@null"
+        android:contentDescription="@string/dado_1"
+        android:scaleType="center"
+        android:src="@drawable/dado1"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="179dp"
+        tools:layout_editor_absoluteY="597dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
