@@ -47,7 +47,7 @@
         android:layout_height="55dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/editar_perfil"
+        android:text="@string/cambiar_usuario"
         android:textColor="@color/purpledark"
         android:textSize="20sp"
         android:textStyle="bold"

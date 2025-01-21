@@ -45,7 +45,7 @@
 
     <!--Perfil-->
     <string name="cambiar_contrasena">Cambiar contraseña</string>
-    <string name="editar_perfil">Editar Perfil</string>
+    <string name="cambiar_usuario">Cambiar Usuario</string>
     <string name="cerrar_sesion">Cerrar Sesión</string>
     <string name="notificacioines">Notificaciones</string>
     <string name="perfil">Perfil</string>
