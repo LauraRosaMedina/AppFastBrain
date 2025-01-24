@@ -33,7 +33,7 @@
             android:name=".ajustespartida"
             android:exported="false" />
         <activity
-            android:name=".crearSala_unirSala"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,7 +44,7 @@
             android:name=".inicio"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".crearSala_unirSala"
             android:exported="false" />
     </application>
 

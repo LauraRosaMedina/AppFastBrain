@@ -31,29 +31,8 @@ public class sala_espera extends AppCompatActivity {
             return insets;
         });
 
-        // Llamar a connectToServer para conectarse al servidor
-        Client.connectToServer(new Client.ClientCallback() {
-            @Override
-            public void onResponse(String response) {
-                // Aquí recibimos la respuesta del servidor (por ejemplo, "PERMITIDO")
-                if ("PERMITIDO".equals(response)) {
-                    // Si la respuesta es PERMITIDO, recibimos la lista de jugadores
-                    actualizarListaJugadores();
-                } else {
-                    // Si la respuesta es "RECHAZADO" o algún error, lo manejamos aquí
-                    textoJugadores.setText("Error: No se pudo conectar.");
-                }
-            }
-        });
+
     }
 
-    // Este método simula la actualización de la lista de jugadores conectados
-    private void actualizarListaJugadores() {
-        // Aquí debes recibir la lista de jugadores conectados desde el servidor
-        // Este es solo un ejemplo, la lista real debe venir del servidor a través de Client
-        String listaJugadores = "Jugadores conectados: Jugador1, Jugador2, Jugador3";
 
-        // Actualizar el TextView con la lista de jugadores
-        textoJugadores.setText(listaJugadores);
-    }
 }

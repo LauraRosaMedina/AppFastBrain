@@ -1,6 +1,8 @@
 package com.example.fastbrain;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,24 @@ public class activity_registrarse extends AppCompatActivity {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
+        });
+
+        // Clases
+        ConexionBBDD conexionBBDD = new ConexionBBDD(activity_registrarse.this);
+
+        // Elementos de la UI
+        EditText emailField = findViewById(R.id.emailField);
+        EditText passwordField = findViewById(R.id.passwordField);
+        Button registerButton = findViewById(R.id.registerButton);
+
+        registerButton.setOnClickListener( v -> {
+            String email = emailField.getText().toString();
+            String password = passwordField.getText().toString();
+
+            conexionBBDD.agregarUsuario(email, password);
+
+
+
         });
     }
 }
