@@ -1,5 +1,6 @@
 package com.example.fastbrain;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.widget.Button;
@@ -32,6 +33,16 @@ public class crearSala_unirSala extends AppCompatActivity {
         });
         // Obtener el botón de crear sala
         Button botonCrearSala = findViewById(R.id.botoncrearsala);
+
+
+        Button botoncrearsala = findViewById(R.id.botoncrearsala);
+
+        botoncrearsala.setOnClickListener(v -> {
+            Intent intent = new Intent(crearSala_unirSala.this , ajustespartida.class);
+            startActivity(intent);
+
+            finish();
+        });
 
 
     }

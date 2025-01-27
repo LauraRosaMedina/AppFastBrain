@@ -15,6 +15,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class activity_registrarse extends AppCompatActivity {
 
+    private boolean registroExitoso = false; // Variable para controlar el estado del registro
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,30 +37,43 @@ public class activity_registrarse extends AppCompatActivity {
         Button registerButton = findViewById(R.id.registerButton);
         ImageButton button_reset = findViewById(R.id.button_reset);
 
-
-        button_reset.setOnClickListener( v -> {
+        // Acción para el botón de reset
+        button_reset.setOnClickListener(v -> {
             Intent intent = new Intent(activity_registrarse.this, activity_iniciarsesion.class);
             startActivity(intent);
-
             finish();
         });
-        registerButton.setOnClickListener( v -> {
+
+        // Acción para el botón de registro
+        registerButton.setOnClickListener(v -> {
             String email = emailField.getText().toString();
             String password = passwordField.getText().toString();
 
-            conexionBBDD.agregarUsuario(email, password);
+            // Llamar al método de agregarUsuario de ConexionBBDD, pasando el callback
+            conexionBBDD.agregarUsuario(email, password, new ConexionBBDD.RegistroCallback() {
+                @Override
+                public void onRegistroExitoso() {
+                    // Cuando el registro es exitoso, cambiamos el estado y navegamos
+                    registroExitoso = true;
+                }
 
+                @Override
+                public void onRegistroFallido() {
+                    // Cuando el registro falla, cambiamos el estado a false
+                    registroExitoso = false;
+                }
+            });
+
+            // Usamos Handler para esperar 3 segundos antes de hacer algo
             new Handler().postDelayed(() -> {
-                // Crear un Intent para navegar a la activity_iniciarsesion
-                Intent intent = new Intent(activity_registrarse.this, activity_iniciarsesion.class);
-                startActivity(intent);
-
-                // Cerrar la actividad actual para que no pueda volver a ella
-                finish();
-            }, 3000); // 3000 milisegundos = 3 segundos
-
-
-
+                // Si el registro fue exitoso, navegar a la actividad de inicio de sesión
+                if (registroExitoso) {
+                    Intent intent = new Intent(activity_registrarse.this, activity_iniciarsesion.class);
+                    startActivity(intent);
+                    finish();  // Finalizar la actividad actual
+                }
+                // Si el registro no fue exitoso, la actividad sigue en su lugar
+            }, 3000);  // Esperar 3 segundos antes de cambiar
         });
     }
 }
