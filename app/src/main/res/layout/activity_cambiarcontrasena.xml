@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/registerPage"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_gradient"
-    tools:context=".activity_registrarse">
+    tools:context=".activity_cambiarusuario">
 
+    <!-- Imagen del perfil -->
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="282dp"
-        android:layout_height="249dp"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/icono"
+        android:layout_width="196dp"
+        android:layout_height="156dp"
+        android:src="@drawable/perfil"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -21,91 +21,73 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.126" />
 
+    <!-- Título -->
     <TextView
-        android:id="@+id/registroTextView"
+        android:id="@+id/loginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/pagina_registro"
-        android:textColor="@color/malva"
+        android:text="@string/cambiar_contrasena"
+        android:textColor="@color/purple"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/emailField"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImage"
-        app:layout_constraintVertical_bias="0.761"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
+
 
     <EditText
         android:id="@+id/emailField"
         android:layout_width="356dp"
         android:layout_height="55dp"
-        android:background="@drawable/edittext_bordermalva"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/edittext_bordernaranja"
         android:fontFamily="sans-serif-smallcaps"
-        android:hint="@string/email"
+        android:hint="@string/contrasenanueva"
         android:inputType="textEmailAddress"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/malva"
+        android:textColorHint="@color/naranja"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/passwordField"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.974"
         tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/passwordField"
         android:layout_width="356dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/edittext_bordermalva"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/edittext_bordernaranja"
         android:fontFamily="sans-serif-smallcaps"
-        android:hint="@string/contraseña"
+        android:hint="@string/confirmarcontrasena"
         android:inputType="textPassword"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textColorHint="@color/malva"
+        android:textColorHint="@color/naranja"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/registerButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/registerButton"
         android:layout_width="356dp"
         android:layout_height="55dp"
+        android:layout_marginBottom="116dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/registrarse"
-        android:textColor="@color/purpledark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/googleRegisterButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.985" />
-
-    <Button
-        android:id="@+id/googleRegisterButton"
-        android:layout_width="356dp"
-        android:layout_height="55dp"
-        android:backgroundTint="@color/malva"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/google"
+        android:text="@string/guardarcambios"
         android:textColor="@color/purpledark"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/button_reset"
@@ -114,8 +96,7 @@
         android:background="@null"
         android:contentDescription="@string/volver"
         android:src="@drawable/baseline_arrow_back_24"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="338dp"
-        tools:layout_editor_absoluteY="658dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
