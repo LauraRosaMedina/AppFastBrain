@@ -27,5 +27,27 @@ public class ConexionBBDD {
                 });
     }
 
+    //Método para iniciar sesión
+
+    public void iniciarSesion (String email, String password, OnLoginResultCallBack callBack){
+        mauth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        //Inicio de sesión exitoso
+                        callBack.onSuccess();
+                    } else {
+                        //Error al iniciar sesión
+                        callBack.onFailure();
+                    }
+                });
+    }
+
+    //Interfaz para manejar resultados del inicio de sesión
+
+    public interface OnLoginResultCallBack {
+        void onSuccess();
+        void onFailure();
+    }
+
 
 }

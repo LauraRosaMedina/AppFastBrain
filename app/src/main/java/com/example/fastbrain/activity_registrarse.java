@@ -1,6 +1,8 @@
 package com.example.fastbrain;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -36,6 +38,15 @@ public class activity_registrarse extends AppCompatActivity {
             String password = passwordField.getText().toString();
 
             conexionBBDD.agregarUsuario(email, password);
+
+            new Handler().postDelayed(() -> {
+                // Crear un Intent para navegar a la activity_iniciarsesion
+                Intent intent = new Intent(activity_registrarse.this, activity_iniciarsesion.class);
+                startActivity(intent);
+
+                // Cerrar la actividad actual para que no pueda volver a ella
+                finish();
+            }, 3000); // 3000 milisegundos = 3 segundos
 
 
 
