@@ -119,7 +119,7 @@
         android:contentDescription="@string/volver"
         android:src="@drawable/baseline_arrow_back_24"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="338dp"
+        tools:layout_editor_absoluteX="27dp"
         tools:layout_editor_absoluteY="658dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

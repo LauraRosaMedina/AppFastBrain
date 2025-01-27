@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/registerPage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient"
@@ -40,8 +40,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-
-
     <LinearLayout
         android:id="@+id/cuadrojugar"
         android:layout_width="322dp"
@@ -55,8 +53,7 @@
         app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logoImage"
-        app:layout_constraintVertical_bias="0.427" />
-
+        app:layout_constraintVertical_bias="0.328" />
 
     <ImageView
         android:id="@+id/logoImage"
@@ -83,18 +80,6 @@
     </FrameLayout>
 
     <ImageButton
-        android:id="@+id/dice2"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="end|center_vertical"
-        android:background="@null"
-        android:contentDescription="@string/dado_2"
-        android:src="@drawable/dado2"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="578dp" />
-
-    <ImageButton
         android:id="@+id/dice1"
         android:layout_width="87dp"
         android:layout_height="80dp"
@@ -105,7 +90,36 @@
         android:scaleType="center"
         android:src="@drawable/dado1"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="597dp" />
+        tools:layout_editor_absoluteX="175dp"
+        tools:layout_editor_absoluteY="536dp" />
+
+    <ImageButton
+        android:id="@+id/dice2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="end|center_vertical"
+        android:background="@null"
+        android:contentDescription="@string/dado_2"
+        android:src="@drawable/dado2"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="140dp"
+        tools:layout_editor_absoluteY="517dp" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="133dp"
+        android:layout_height="52dp"
+        android:backgroundTint="@color/naranja"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/salir"
+        android:textColor="@color/purpledark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cuadrojugar"
+        app:layout_constraintVertical_bias="0.92" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
