@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +33,15 @@ public class activity_registrarse extends AppCompatActivity {
         EditText emailField = findViewById(R.id.emailField);
         EditText passwordField = findViewById(R.id.passwordField);
         Button registerButton = findViewById(R.id.registerButton);
+        ImageButton button_reset = findViewById(R.id.button_reset);
 
+
+        button_reset.setOnClickListener( v -> {
+            Intent intent = new Intent(activity_registrarse.this, activity_iniciarsesion.class);
+            startActivity(intent);
+
+            finish();
+        });
         registerButton.setOnClickListener( v -> {
             String email = emailField.getText().toString();
             String password = passwordField.getText().toString();

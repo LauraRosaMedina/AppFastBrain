@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -33,6 +34,14 @@ public class activity_iniciarsesion extends AppCompatActivity {
         EditText emailField = findViewById(R.id.emailField);
         EditText passwordField = findViewById(R.id.passwordField);
         Button loginButton = findViewById(R.id.roundButton2);
+        ImageButton button_reset = findViewById(R.id.button_reset);
+
+        button_reset.setOnClickListener( v -> {
+            Intent intent = new Intent(activity_iniciarsesion.this , inicio.class);
+            startActivity(intent);
+
+            finish();
+        });
 
 
         //Configuramos el botón de inicio de sesión

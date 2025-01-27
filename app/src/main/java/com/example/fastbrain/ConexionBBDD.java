@@ -17,14 +17,24 @@ public class ConexionBBDD {
     }
 
     public void agregarUsuario(String email, String password) {
-        mauth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Toast.makeText(context, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(context, "Error en registro", Toast.LENGTH_SHORT).show();
-                    }
-                });
+        //validamos que el correo sea correcto
+        if (isEmailValid(email)) {
+            mauth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(context, "Registro exitoso", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Error en registro", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        } else {
+            Toast.makeText(context, "El correo electrónico no es válido" , Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean isEmailValid(String email) {
+        // Aquí puedes usar un patrón más flexible, o limitarlo a ciertos dominios
+        return email.contains("@gmail.com") || email.contains("@outlook.com") ;
     }
 
     //Método para iniciar sesión
