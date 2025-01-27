@@ -113,9 +113,13 @@
         android:layout_height="57dp"
         android:background="@null"
         android:contentDescription="@string/volver"
-        android:src="@drawable/baseline_arrow_back_24"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="338dp"
-        tools:layout_editor_absoluteY="658dp" />
+        android:src="@drawable/white_arrow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/googleRegisterButton"
+        app:layout_constraintVertical_bias="1.0"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

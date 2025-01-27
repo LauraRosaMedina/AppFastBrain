@@ -1,24 +1,62 @@
 package com.example.fastbrain;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class activity_perfil extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_perfil);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        // Referencias a los botones
+        Button btnEditarPerfil = findViewById(R.id.roundButton);
+        Button btnCambiarContrasena = findViewById(R.id.roundButton2);
+        Button btnCerrarSesion = findViewById(R.id.roundButton3);
+        ImageButton btnVolver = findViewById(R.id.button_reset);
+
+        // Botón "Cambiar Usuario" -> Redirigir a activity_cambiarusuario
+        btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity_perfil.this, activity_cambiarusuario.class);
+                startActivity(intent);
+            }
+        });
+
+        // Botón "Cambiar Contraseña" -> Redirigir a activity_cambiarcontrasena
+        btnCambiarContrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity_perfil.this, activity_cambiarcontrasena.class);
+                startActivity(intent);
+            }
+        });
+
+        // Botón "Cerrar Sesión" -> Cerrar sesión y redirigir a activity_iniciarsesion
+        btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(activity_perfil.this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(activity_perfil.this, activity_iniciarsesion.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        // Botón "Volver" -> Regresa a la actividad anterior
+        btnVolver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish(); // Cierra la actividad actual y vuelve atrás
+            }
         });
     }
 }
