@@ -17,6 +17,12 @@
             android:name=".activity_cambiarcontrasena"
             android:exported="false" />
         <activity
+            android:name=".activity_cambiarcontrasena"
+            android:exported="false" />
+        <activity
+            android:name=".activity_cambiarusuario"
+            android:exported="false" />
+        <activity
             android:name=".activity_perfil"
             android:exported="false" />
         <activity
