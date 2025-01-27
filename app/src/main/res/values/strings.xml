@@ -51,6 +51,11 @@
     <string name="cerrar_sesion">Cerrar Sesión</string>
     <string name="notificaciones">Notificaciones</string>
     <string name="perfil">Perfil</string>
-    <!--Prueba1-->
+    <string name="conmfirmarnuevo">Confirmar Usuario Nuevo</string>
+    <string name="usuarionuevo">Nuevo Usuario</string>
+    <string name="confirmarcontrasena">Confirmar Contraseña Nueva</string>
+    <string name="contrasenanueva">Nueva Contraseña</string>
+    <string name="guardarcambios">Guardar Cambios</string>
+
 
 </resources>
