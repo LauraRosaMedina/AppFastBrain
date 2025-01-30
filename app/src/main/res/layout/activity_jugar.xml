@@ -70,21 +70,22 @@
 
 
     <ImageButton
-        android:id="@+id/dice"
-        android:layout_width="193dp"
-        android:layout_height="161dp"
+        android:id="@+id/dado"
+        android:layout_width="87dp"
+        android:layout_height="80dp"
         android:layout_gravity="start|center_vertical"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="64dp"
+        android:layout_marginTop="68dp"
         android:background="@null"
         android:backgroundTint="@null"
         android:contentDescription="@string/dado_1"
         android:scaleType="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cuadrojugar"
+        tools:ignore="MissingConstraints" />
 
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/btnSalir"
         android:layout_width="133dp"
         android:layout_height="52dp"
         android:backgroundTint="@color/naranja"
@@ -97,10 +98,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cuadrojugar"
-        app:layout_constraintVertical_bias="0.92"
-        android:onClick="onSalirButtonClick" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/dado"
+        app:layout_constraintVertical_bias="0.92" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
