@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class ConexionBBDD {
 
@@ -16,30 +17,26 @@ public class ConexionBBDD {
         mauth = FirebaseAuth.getInstance();
     }
 
-    // Modificado para aceptar un callback
+    // Método para agregar un nuevo usuario (ya tienes este método en tu código)
     public void agregarUsuario(String email, String password, RegistroCallback callback) {
-        // Validamos que el correo sea correcto
         if (isEmailValid(email)) {
             mauth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            // Si el registro es exitoso, mostramos el Toast y llamamos al callback
                             Toast.makeText(context, "Registro exitoso", Toast.LENGTH_SHORT).show();
-                            callback.onRegistroExitoso(); // Notificamos que el registro fue exitoso
+                            callback.onRegistroExitoso();
                         } else {
-                            // Si el registro falla, mostramos el Toast y llamamos al callback
                             Toast.makeText(context, "Error en registro", Toast.LENGTH_SHORT).show();
-                            callback.onRegistroFallido(); // Notificamos que el registro falló
+                            callback.onRegistroFallido();
                         }
                     });
         } else {
-            // Si el correo no es válido, mostramos un Toast y llamamos al callback
             Toast.makeText(context, "El correo electrónico no es válido", Toast.LENGTH_SHORT).show();
-            callback.onRegistroFallido(); // Notificamos que el registro falló
+            callback.onRegistroFallido();
         }
     }
 
-    // Método para verificar que el correo es válido (limitarlo a ciertos dominios)
+    // Verificar que el correo es válido (puedes ajustar esto a tus necesidades)
     private boolean isEmailValid(String email) {
         return email.contains("@gmail.com") || email.contains("@outlook.com");
     }
@@ -49,29 +46,47 @@ public class ConexionBBDD {
         mauth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        // Inicio de sesión exitoso
                         callBack.onSuccess();
                     } else {
-                        // Error al iniciar sesión
                         callBack.onFailure();
                     }
                 });
     }
 
-    public void cerrarSesion (){
-        mauth.signOut();  // Cierra la sesión del usuario en Firebase
+    // Cerrar sesión
+    public void cerrarSesion() {
+        mauth.signOut();
         Toast.makeText(context, "Sesión cerrada correctamente", Toast.LENGTH_SHORT).show();
     }
 
-    // Interfaz para manejar resultados del inicio de sesión
+    // Interfaz para manejar el resultado del inicio de sesión
     public interface OnLoginResultCallBack {
         void onSuccess();
         void onFailure();
     }
 
-    // Nueva interfaz para manejar los resultados del registro
+    // Nueva interfaz para manejar el resultado del registro
     public interface RegistroCallback {
         void onRegistroExitoso();
         void onRegistroFallido();
+    }
+
+    // Método para cambiar la contraseña del usuario logueado
+    public void cambiarContrasena(String nuevaContrasena) {
+        FirebaseUser user = mauth.getCurrentUser();
+        if (user != null) {
+            // Si el usuario está autenticado, actualizamos la contraseña
+            user.updatePassword(nuevaContrasena)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(context, "Contraseña actualizada correctamente", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Error al actualizar la contraseña", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        } else {
+            // Si no hay usuario autenticado
+            Toast.makeText(context, "No hay usuario autenticado", Toast.LENGTH_SHORT).show();
+        }
     }
 }
