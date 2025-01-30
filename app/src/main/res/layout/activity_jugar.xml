@@ -68,42 +68,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.028" />
 
-    <FrameLayout
-        android:id="@+id/diceButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logoImage"
-        android:layout_marginTop="200dp">
-
-    </FrameLayout>
 
     <ImageButton
-        android:id="@+id/dice1"
-        android:layout_width="87dp"
-        android:layout_height="80dp"
+        android:id="@+id/dice"
+        android:layout_width="193dp"
+        android:layout_height="161dp"
         android:layout_gravity="start|center_vertical"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="64dp"
         android:background="@null"
         android:backgroundTint="@null"
         android:contentDescription="@string/dado_1"
         android:scaleType="center"
-        android:src="@drawable/dado1"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="175dp"
-        tools:layout_editor_absoluteY="536dp" />
-
-    <ImageButton
-        android:id="@+id/dice2"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="end|center_vertical"
-        android:background="@null"
-        android:contentDescription="@string/dado_2"
-        android:src="@drawable/dado2"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="140dp"
-        tools:layout_editor_absoluteY="517dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/registerButton"
@@ -120,6 +98,9 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cuadrojugar"
-        app:layout_constraintVertical_bias="0.92" />
+        app:layout_constraintVertical_bias="0.92"
+        android:onClick="onSalirButtonClick" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

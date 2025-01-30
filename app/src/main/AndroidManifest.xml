@@ -13,12 +13,8 @@
         android:theme="@style/Theme.FastBrain"
         tools:targetApi="31">
 
-        <!-- Otras actividades que no serán la de inicio -->
         <activity
             android:name=".activity_cambiarcontrasena"
-            android:exported="false" />
-        <activity
-            android:name=".activity_cambiarusuario"
             android:exported="false" />
         <activity
             android:name=".activity_perfil"
