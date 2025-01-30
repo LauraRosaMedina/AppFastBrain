@@ -28,7 +28,7 @@
     <string name="signo_mas">+</string>
     <string name="numero_uno">1</string>
     <string name="signo_menos">-</string>
-    <string name="codigo">CREAR CÓDIGO</string>
+    <string name="codigo">CREAR PARTIDA</string>
     <string name="boton_perfil">botón para acceder al perfil del usuario</string>
     <string name="loading">Loading...</string>
 

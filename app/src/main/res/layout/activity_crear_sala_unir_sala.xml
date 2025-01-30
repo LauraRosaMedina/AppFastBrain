@@ -172,7 +172,7 @@
 
     <!-- Botón con ícono a la izquierda del texto en el cuadro duplicado -->
     <Button
-        android:id="@+id/botoncrearsala_duplicado"
+        android:id="@+id/boton_unirSala"
         android:layout_width="230dp"
         android:layout_height="65dp"
         android:backgroundTint="@color/white"

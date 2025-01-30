@@ -13,6 +13,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.fastbrain.client.cliente;
+
 
 public class crearSala_unirSala extends AppCompatActivity {
 
@@ -36,6 +38,7 @@ public class crearSala_unirSala extends AppCompatActivity {
 
 
         Button botoncrearsala = findViewById(R.id.botoncrearsala);
+        Button boton_unirSala = findViewById(R.id.boton_unirSala);
 
         botoncrearsala.setOnClickListener(v -> {
             Intent intent = new Intent(crearSala_unirSala.this , ajustespartida.class);
@@ -44,6 +47,19 @@ public class crearSala_unirSala extends AppCompatActivity {
             finish();
         });
 
+
+        boton_unirSala.setOnClickListener(v -> {
+            // Iniciar el cliente en un hilo separado
+            new Thread(() -> {
+                cliente client = new cliente();
+                client.conectarServidor();
+            }).start();
+
+            // Cambiar a la actividad de juego
+            Intent intent = new Intent(crearSala_unirSala.this, activity_jugar.class);
+            startActivity(intent);
+            finish();
+        });
 
     }
 }

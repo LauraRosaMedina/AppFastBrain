@@ -11,11 +11,12 @@ public class servidor {
     private static Semaphore semaphore = new Semaphore(MAX_PLAYERS); // Controla el acceso concurrente
     private static List<ClientHandler> players = Collections.synchronizedList(new ArrayList<>()); // Lista de jugadores
 
-    public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+    public void ejecutarServidor() {
+        try (ServerSocket serverSocket = new ServerSocket(PORT, 50, InetAddress.getByName("0.0.0.0"))) {
             System.out.println("Servidor iniciado. Esperando conexiones en el puerto " + PORT + "...");
 
             while (true) {
+                // Aceptar conexión de un cliente
                 Socket clientSocket = serverSocket.accept();
 
                 if (semaphore.tryAcquire()) {
@@ -27,8 +28,8 @@ public class servidor {
                     new Thread(player).start();
                 } else {
                     // Rechazar al cliente si ya hay 4 jugadores
-                    PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
-                    out.println("Servidor lleno. Inténtelo más tarde.");
+                    DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
+                    out.writeUTF("Servidor lleno. Inténtelo más tarde.");
                     clientSocket.close();
                 }
             }
@@ -40,8 +41,8 @@ public class servidor {
     // Clase interna para manejar la comunicación con cada cliente
     static class ClientHandler implements Runnable {
         private Socket clientSocket;
-        private BufferedReader in;
-        private PrintWriter out;
+        private DataInputStream in;
+        private DataOutputStream out;
 
         public ClientHandler(Socket socket) {
             this.clientSocket = socket;
@@ -50,23 +51,28 @@ public class servidor {
         @Override
         public void run() {
             try {
-                in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-                out = new PrintWriter(clientSocket.getOutputStream(), true);
+                // Crear flujos de entrada y salida
+                in = new DataInputStream(clientSocket.getInputStream());
+                out = new DataOutputStream(clientSocket.getOutputStream());
 
                 // Enviar mensaje de bienvenida al cliente
-                out.println("¡Bienvenido al servidor! Esperando a otros jugadores...");
+                out.writeUTF("¡Bienvenido al servidor! Esperando a otros jugadores...");
                 System.out.println("Esperando mensajes del cliente...");
 
-                // Leer y procesar mensajes del cliente
-                String message;
-                while ((message = in.readLine()) != null) {
-                    System.out.println("Mensaje del cliente: " + message);
+                // Leer y procesar la solicitud del cliente
+                String message = in.readUTF();
+                System.out.println("Mensaje del cliente: " + message);
 
-                    // Responder al cliente
-                    out.println("Servidor: Recibido -> " + message);
-
-                    // Lógica del juego puede ir aquí (p. ej., broadcast a todos los jugadores)
+                if ("Solicitud de unión a la sala".equals(message)) {
+                    if (players.size() <= 4) {
+                        out.writeUTF("OK");
+                        System.out.println("Cliente unido a la sala.");
+                    } else {
+                        out.writeUTF("Sala llena");
+                        clientSocket.close();
+                    }
                 }
+
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
