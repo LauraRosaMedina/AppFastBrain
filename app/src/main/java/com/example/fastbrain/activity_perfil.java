@@ -16,10 +16,19 @@ public class activity_perfil extends AppCompatActivity {
         setContentView(R.layout.activity_perfil);
 
         // Referencias a los botones
+        Button btnEditarPerfil = findViewById(R.id.roundButton);
         Button btnCambiarContrasena = findViewById(R.id.roundButton2);
         Button btnCerrarSesion = findViewById(R.id.roundButton3);
         ImageButton btnVolver = findViewById(R.id.button_reset);
 
+        // Botón "Cambiar Usuario" -> Redirigir a activity_cambiarusuario
+        btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity_perfil.this, activity_cambiarusuario.class);
+                startActivity(intent);
+            }
+        });
 
         // Botón "Cambiar Contraseña" -> Redirigir a activity_cambiarcontrasena
         btnCambiarContrasena.setOnClickListener(new View.OnClickListener() {
