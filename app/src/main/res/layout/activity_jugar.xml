@@ -2,12 +2,23 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/registerPage"
+    android:id="@+id/jugar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient"
     tools:context=".activity_jugar">
 
+
+    <ImageView
+        android:id="@+id/imagenJugar"
+        android:layout_width="272dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/letrasfastbrain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/boton_perfil"
@@ -24,65 +35,58 @@
         app:layout_constraintHorizontal_bias="0.955"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <TextView
-        android:id="@+id/configuracion_juego"
-        android:layout_width="331dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="128dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/jugar"
-        android:textAlignment="center"
-        android:textColor="@color/malva"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        android:id="@+id/emailUsuarioTextView"
+        android:layout_width="364dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="136dp"
+        android:text="@string/usuarioconectado"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/usuarioTextView"
+        android:layout_width="361dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="208dp"
+        android:text="@string/emailusuarioconectado"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <LinearLayout
         android:id="@+id/cuadrojugar"
-        android:layout_width="322dp"
-        android:layout_height="278dp"
-        android:layout_margin="16dp"
+        android:layout_width="236dp"
+        android:layout_height="213dp"
+        android:layout_marginTop="296dp"
         android:background="@drawable/cuadro_transparente"
         android:orientation="vertical"
         android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logoImage"
-        app:layout_constraintVertical_bias="0.328" />
-
-    <ImageView
-        android:id="@+id/logoImage"
-        android:layout_width="413dp"
-        android:layout_height="60dp"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/letrasfastbrain"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/dado"
         android:layout_width="87dp"
         android:layout_height="80dp"
         android:layout_gravity="start|center_vertical"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="24dp"
         android:background="@null"
         android:backgroundTint="@null"
         android:contentDescription="@string/dado_1"
         android:scaleType="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cuadrojugar"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/cuadrojugar" />
 
     <Button
         android:id="@+id/btnSalir"
@@ -96,9 +100,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dado"
-        app:layout_constraintVertical_bias="0.92" />
-
+        app:layout_constraintVertical_bias="0.575" />
 </androidx.constraintlayout.widget.ConstraintLayout>

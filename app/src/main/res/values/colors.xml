@@ -6,4 +6,11 @@
     <color name="purpledark">#4B066B</color>
     <color name="naranja">#EB9C36</color>
     <color name="malva">#E9C2F2</color>
+
+    <!--colores para el layout-->
+    <color name="color_1">#FF5733</color> <!-- Naranja -->
+    <color name="color_2">#33FF57</color> <!-- Verde -->
+    <color name="color_3">#3357FF</color> <!-- Azul -->
+    <color name="color_4">#FF33A6</color> <!-- Rosa -->
+    <color name="color_5">#FFD433</color> <!-- Amarillo -->
 </resources>

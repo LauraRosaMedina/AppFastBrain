@@ -11,7 +11,13 @@ public class servidor {
     private static Semaphore semaphore = new Semaphore(MAX_PLAYERS); // Controla el acceso concurrente
     private static List<ClientHandler> players = Collections.synchronizedList(new ArrayList<>()); // Lista de jugadores
 
+    private int codigoSala;  // Código generado para la sala
+
     public void ejecutarServidor() {
+        // generar código aleatorio
+        codigoSala = new Random().nextInt(9000) + 1000; // Números entre 1000 y 9999
+        System.out.println("Código de sala generado: " + codigoSala);
+
         try (ServerSocket serverSocket = new ServerSocket(PORT, 50, InetAddress.getByName("0.0.0.0"))) {
             System.out.println("Servidor iniciado. Esperando conexiones en el puerto " + PORT + "...");
 
@@ -36,6 +42,11 @@ public class servidor {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    // Método para obtener el código generado
+    public int getCodigoSala() {
+        return codigoSala;
     }
 
     // Clase interna para manejar la comunicación con cada cliente

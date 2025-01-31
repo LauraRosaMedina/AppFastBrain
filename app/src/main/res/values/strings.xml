@@ -32,6 +32,10 @@
     <string name="boton_perfil">botón para acceder al perfil del usuario</string>
     <string name="loading">Loading...</string>
     <string name="salir">Salir</string>
+    <string name="usuarioconectado">Código del jugador</string>
+    <string name="emailusuarioconectado">Email del jugador</string>
+
+
 
 
     <!--Registro-->

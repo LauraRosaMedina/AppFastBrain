@@ -5,7 +5,7 @@ import java.net.*;
 import android.widget.TextView;
 
 public class cliente {
-    private static final String SERVER_ADDRESS = "10.192.116.26"; // IP del servidor
+    private static final String SERVER_ADDRESS = "10.192.116.85"; // IP del servidor
     private static final int SERVER_PORT = 12345; // Puerto del servidor
 
     private Socket socket;

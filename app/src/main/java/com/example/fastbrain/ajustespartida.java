@@ -2,6 +2,7 @@ package com.example.fastbrain;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,6 +31,9 @@ public class ajustespartida extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        String email = getIntent().getStringExtra("email");
+        Log.d("EmailDebug", "Email recibido en ajustespartida: " + email);
 
         // Referencias a los botones y al contador
         Button btnDecrementar = findViewById(R.id.btn_decrementar);
@@ -89,16 +93,22 @@ public class ajustespartida extends AppCompatActivity {
 
 
         btn_crear_partida.setOnClickListener(v -> {
-            // Iniciar el servidor en un hilo separado
             new Thread(() -> {
                 servidor server = new servidor();
                 server.ejecutarServidor();
-            }).start();
 
-            // Pasar a la Activity "Jugar"
-            Intent intent = new Intent(ajustespartida.this, activity_jugar.class);
-            startActivity(intent);
-            finish();
+                // Obtener el código generado
+                int codigoSala = server.getCodigoSala();
+
+                // Moverse a la nueva Activity en el hilo principal
+                runOnUiThread(() -> { //usamos runOnUiThread()
+                    Intent intent = new Intent(ajustespartida.this, crearSala_unirSala.class);
+                    intent.putExtra("codigo_sala", codigoSala);  // Pasar el código generado
+                    intent.putExtra("email", email);  // Asegúrate de pasar el email
+                    startActivity(intent);
+                    finish();
+                });
+            }).start();
         });
 
     }
