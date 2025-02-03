@@ -166,7 +166,7 @@ public class activity_jugar extends AppCompatActivity {
                 // Seleccionar un color aleatorio de la lista
                 int colorAleatorio = colores[(int) (Math.random() * colores.length)];
                 cuadroJugar.setBackgroundColor(colorAleatorio);  // Establecer el color final
-                Toast.makeText(activity_jugar.this, "Color final: " + Integer.toHexString(colorAleatorio), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(activity_jugar.this, "Color final: " + Integer.toHexString(colorAleatorio), Toast.LENGTH_SHORT).show();
             }
         });
 
