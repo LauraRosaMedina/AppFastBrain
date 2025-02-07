@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Agregar permisos para acceder a la red -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <!--<uses-permission android:name="android.permission.WRITE_SETTINGS"/>-->
 
     <application
         android:allowBackup="true"
@@ -16,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FastBrain"
         tools:targetApi="31">
+        <activity
+            android:name=".activity_preguntas"
+            android:exported="false" />
         <activity
             android:name=".activity_cambiarcontrasena"
             android:exported="false" />

@@ -38,34 +38,50 @@
 
     <TextView
         android:id="@+id/emailUsuarioTextView"
-        android:layout_width="364dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="136dp"
+        android:layout_width="343dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="132dp"
         android:text="@string/usuarioconectado"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/usuarioTextView"
-        android:layout_width="361dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="208dp"
+        android:layout_width="345dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="184dp"
         android:text="@string/emailusuarioconectado"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:id="@+id/turnoTextView"
+        android:layout_width="345dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="236dp"
+        android:text="@string/turno"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <LinearLayout
         android:id="@+id/cuadrojugar"
-        android:layout_width="236dp"
-        android:layout_height="213dp"
-        android:layout_marginTop="296dp"
+        android:layout_width="259dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="316dp"
         android:background="@drawable/cuadro_transparente"
         android:orientation="vertical"
         android:padding="16dp"
@@ -74,24 +90,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/dado"
-        android:layout_width="87dp"
-        android:layout_height="80dp"
-        android:layout_gravity="start|center_vertical"
-        android:layout_marginTop="24dp"
-        android:background="@null"
-        android:backgroundTint="@null"
-        android:contentDescription="@string/dado_1"
-        android:scaleType="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cuadrojugar" />
-
     <Button
         android:id="@+id/btnSalir"
         android:layout_width="133dp"
         android:layout_height="52dp"
+        android:layout_marginBottom="84dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/salir"
@@ -100,7 +103,5 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dado"
-        app:layout_constraintVertical_bias="0.575" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
