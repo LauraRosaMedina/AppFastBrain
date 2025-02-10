@@ -27,7 +27,7 @@ public class activity_jugar extends AppCompatActivity {
     private ImageButton botonPerfil; // Botón de perfil
     private LinearLayout cuadroJugar;
     private TextView turnoTextView; // Referencia al TextView de turno
-    private boolean esMiTurno = true; // Variable para controlar el turno
+    private boolean esMiTurno = false; // Variable para controlar el turno
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;

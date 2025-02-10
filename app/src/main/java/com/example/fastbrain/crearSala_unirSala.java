@@ -82,7 +82,7 @@ public class crearSala_unirSala extends AppCompatActivity {
 
                 // Ahora enviamos el estado del turno (es_mi_turno)
                 // Aún no se sabe si es el turno del jugador, se espera una respuesta del servidor
-                intent.putExtra("es_mi_turno", true);  // Este valor se ajustará cuando se reciba la información del servidor
+                intent.putExtra("es_mi_turno", false);  // Este valor se ajustará cuando se reciba la información del servidor
 
                 // Pasar a la pantalla de juego
                 startActivity(intent);

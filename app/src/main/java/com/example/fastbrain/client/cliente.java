@@ -11,8 +11,9 @@ public class cliente {
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
-    private boolean esMiTurno = true; // Para saber si el jugador puede jugar
+    private boolean esMiTurno = false; // Para saber si el jugador puede jugar
     private TextView turnoTextView; // Para actualizar el estado del turno en la UI
+    private int codigoSala; // Código de sala
 
     // Constructor para recibir el TextView desde la actividad
     public cliente(TextView turnoTextView) {
@@ -20,86 +21,107 @@ public class cliente {
     }
 
     public void conectarServidor() {
+        if (socket != null && !socket.isClosed()) {
+            System.out.println("Ya estás conectado al servidor.");
+            return;  // No intenta reconectarse si la conexión sigue activa
+        }
+
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    // Intentamos conectar con el servidor
                     socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
                     System.out.println("Conectado al servidor: " + SERVER_ADDRESS + " en el puerto " + SERVER_PORT);
 
-                    // Establecer los flujos de entrada y salida
                     in = new DataInputStream(socket.getInputStream());
                     out = new DataOutputStream(socket.getOutputStream());
 
-                    // Enviar solicitud de unión a la sala
                     out.writeUTF("UNIR_SALA");
-                    out.flush();  // Asegurarse de que el mensaje se envíe inmediatamente
+                    out.flush();
 
-                    // Esperar la respuesta del servidor
                     String response = in.readUTF();
-                    if (response.equals("SALA_OK")) {
-                        System.out.println("Unido correctamente a la sala.");
-                        // Enviar un mensaje para preguntar el estado del juego
-                        out.writeUTF("ESTADO_JUEGO");
+                    if (response.startsWith("Código de sala:")) {
+                        codigoSala = Integer.parseInt(response.split(":")[1].trim());
+                        out.writeUTF("UNIR_SALA" + codigoSala);
                         out.flush();
-                        // Iniciar escucha de mensajes del servidor
-                        escucharServidor();
-                    } else if (response.equals("SALA_LLENA")) {
-                        System.out.println("La sala está llena.");
-                        // Mostrar mensaje de error o redirigir a otra actividad
-                        actualizarUI("Sala llena, intenta más tarde.");
-                    } else {
-                        System.out.println("No se pudo unir a la sala: " + response);
-                    }
 
+                        String salaResponse = in.readUTF();
+                        if (salaResponse.equals("SALA_OK")) {
+                            System.out.println("Unido correctamente a la sala.");
+                            out.writeUTF("ESTADO_JUEGO");
+                            out.flush();
+                            escucharServidor();
+                        } else if (salaResponse.equals("SALA_LLENA")) {
+                            System.out.println("La sala está llena.");
+                            actualizarUI("Sala llena, intenta más tarde.");
+                            socket.close();
+                        } else {
+                            System.out.println("No se pudo unir a la sala: " + salaResponse);
+                            socket.close();
+                        }
+                    }
                 } catch (IOException e) {
                     System.out.println("No se pudo conectar al servidor: " + e.getMessage());
-                    e.printStackTrace();
+                    actualizarUI("Error al conectar con el servidor.");
                 }
             }
         }).start();
     }
 
-
-    // Método para escuchar mensajes del servidor (manejo de turnos y estado del juego)
+    // Método mejorado para escuchar mensajes del servidor
     private void escucharServidor() {
         new Thread(() -> {
             try {
                 while (true) {
-                    String serverMessage = in.readUTF();
-                    System.out.println("Servidor: " + serverMessage);
-
-                    if ("TURNO_ACTIVO".equals(serverMessage)) {
-                        esMiTurno = true;
-                        actualizarUI("¡Es tu turno!");
-                    } else if ("ESPERA_TURNO".equals(serverMessage)) {
-                        esMiTurno = false;
-                        actualizarUI("Espera tu turno...");
-                    } else if ("INICIO_JUEGO".equals(serverMessage)) {
-                        // El juego está listo para comenzar
-                        actualizarUI("¡El juego ha comenzado! Espera tu turno.");
-                    } else if ("SALA_LISTA".equals(serverMessage)) {
-                        // La sala está lista para comenzar
-                        actualizarUI("Sala lista, esperando turno.");
-                    } else if ("SALA_NO_LISTA".equals(serverMessage)) {
-                        // La sala no está lista para empezar (puede ser un mensaje de espera)
-                        actualizarUI("Esperando que la sala esté lista.");
+                    if (socket == null || socket.isClosed()) {
+                        actualizarUI("Desconectado del servidor.");
+                        break;
                     }
+
+                    String serverMessage = in.readUTF();
+                    manejarMensajeServidor(serverMessage);
                 }
             } catch (IOException e) {
-                System.out.println("Desconectado del servidor.");
+                actualizarUI("Conexión perdida con el servidor.");
             }
         }).start();
     }
 
+    // Método para manejar los mensajes del servidor
+    private void manejarMensajeServidor(String serverMessage) {
+        System.out.println("Servidor: " + serverMessage);
+
+        switch (serverMessage) {
+            case "TURNO_ACTIVO":
+                esMiTurno = true;
+                actualizarUI("¡Es tu turno!");
+                break;
+            case "ESPERA_TURNO":
+                esMiTurno = false;
+                actualizarUI("Espera tu turno...");
+                break;
+            case "INICIO_JUEGO":
+                actualizarUI("¡El juego ha comenzado! Espera tu turno.");
+                break;
+            case "SALA_LISTA":
+                actualizarUI("Sala lista, esperando turno.");
+                break;
+            case "SALA_NO_LISTA":
+                actualizarUI("Esperando que la sala esté lista.");
+                break;
+            default:
+                actualizarUI("Mensaje desconocido: " + serverMessage);
+                break;
+        }
+    }
+
     // Método para enviar al servidor que el turno ha finalizado
     public void enviarFinTurno() {
-        if (esMiTurno) { // Solo puede enviarlo si es su turno
+        if (esMiTurno) {
             try {
                 out.writeUTF("TURNO_FINALIZADO");
                 out.flush();
-                esMiTurno = false; // Deshabilitar hasta recibir el siguiente turno
+                esMiTurno = false;
                 actualizarUI("Turno finalizado, esperando...");
             } catch (IOException e) {
                 System.out.println("Error al enviar mensaje de fin de turno.");
@@ -114,7 +136,7 @@ public class cliente {
         }
     }
 
-    // Método para desconectar del servidor cuando sea necesario
+    // Método para desconectar del servidor
     public void desconectarServidor() {
         try {
             if (socket != null && !socket.isClosed()) {

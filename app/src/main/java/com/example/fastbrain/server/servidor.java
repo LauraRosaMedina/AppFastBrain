@@ -29,7 +29,8 @@ public class servidor {
                     System.out.println("Cliente conectado: " + clientSocket.getInetAddress());
 
                     // Crear un nuevo hilo para manejar al cliente
-                    ClientHandler player = new ClientHandler(clientSocket);
+                    ClientHandler player = new ClientHandler(clientSocket, this);
+
                     players.add(player);
                     new Thread(player).start();
 
@@ -58,7 +59,6 @@ public class servidor {
         }
     }
 
-
     // Método para actualizar turno
     private static void actualizarTurnos() {
         for (int i = 0; i < players.size(); i++) {
@@ -83,9 +83,9 @@ public class servidor {
         private DataOutputStream out;
         private servidor servidorInstance;
 
-        public ClientHandler(Socket socket) {
+        public ClientHandler(Socket socket, servidor serverInstance) {
             this.clientSocket = socket;
-            this.servidorInstance = servidorInstance;
+            this.servidorInstance = serverInstance;  // Inicializar correctamente
         }
 
         @Override
@@ -96,8 +96,6 @@ public class servidor {
 
                 out.writeUTF("¡Bienvenido al servidor! Esperando a otros jugadores...");
                 out.writeUTF("OK"); // Confirmación para el cliente
-
-                // Notificar a los jugadores sobre el código de la sala
                 out.writeUTF("Código de sala: " + servidorInstance.getCodigoSala());
 
                 while (true) {
@@ -110,6 +108,20 @@ public class servidor {
                 }
             } catch (IOException e) {
                 System.out.println("Jugador desconectado.");
+                cerrarConexion();  // Llamamos al método al detectar una desconexión
+            }
+        }
+
+        // Método para cerrar la conexión del cliente
+        public void cerrarConexion() {
+            try {
+                if (clientSocket != null && !clientSocket.isClosed()) {
+                    clientSocket.close();
+                    System.out.println("Conexión cerrada con cliente.");
+                }
+            } catch (IOException e) {
+                System.out.println("Error al cerrar conexión.");
+            } finally {
                 players.remove(this);
                 semaphore.release();
                 if (!players.isEmpty()) {
@@ -128,8 +140,7 @@ public class servidor {
         }
     }
 
-    // Método para pasar el turno al siguiente jugador
-    private static void avanzarTurno() {
+    private static synchronized void avanzarTurno() {
         if (!players.isEmpty()) {
             turnoActual = (turnoActual + 1) % players.size();
             System.out.println("Turno cambiado al jugador: " + turnoActual);
