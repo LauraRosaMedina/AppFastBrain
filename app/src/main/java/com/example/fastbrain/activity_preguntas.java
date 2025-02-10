@@ -102,12 +102,14 @@ public class activity_preguntas extends AppCompatActivity {
     private void verificarRespuesta(String respuestaSeleccionada) {
         if (respuestaSeleccionada.equals(preguntaActual.getRespuestaCorrecta())) {
             Log.d("Respuesta", "Correcto");
+            Toast.makeText(this, "¡Respuesta correcta!", Toast.LENGTH_SHORT).show(); // Toast para respuesta correcta
             if (!preguntasLista.isEmpty()) {
                 mostrarPregunta();  // Mostrar la siguiente pregunta si hay más
                 iniciarTemporizador();  // Reiniciar el temporizador
             }
         } else {
             Log.d("Respuesta", "Incorrecto");
+            Toast.makeText(this, "Respuesta incorrecta", Toast.LENGTH_SHORT).show(); // Toast para respuesta incorrecta
             // Si la respuesta es incorrecta, ir a la actividad 'activity_jugar'
             Intent intent = new Intent(activity_preguntas.this, activity_jugar.class);
             startActivity(intent);
