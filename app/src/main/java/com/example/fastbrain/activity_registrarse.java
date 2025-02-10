@@ -60,6 +60,7 @@ public class activity_registrarse extends AppCompatActivity {
                 public void onRegistroExitoso() {
                     // Cuando el registro es exitoso, cambiamos el estado y navegamos
                     registroExitoso = true;
+                    Toast.makeText(activity_registrarse.this, "Se ha registrado con éxito", Toast.LENGTH_SHORT).show();
                 }
 
                 @Override
