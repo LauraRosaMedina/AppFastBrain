@@ -5,13 +5,13 @@ import java.net.*;
 import android.widget.TextView;
 
 public class cliente {
-    private static final String SERVER_ADDRESS = "10.192.116.186"; // IP del servidor
+    private static final String SERVER_ADDRESS = "10.192.117.26"; // IP del servidor
     private static final int SERVER_PORT = 12345; // Puerto del servidor
 
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
-    private boolean esMiTurno = false; // Para saber si el jugador puede jugar
+    private boolean esMiTurno = true; // Para saber si el jugador puede jugar
     private TextView turnoTextView; // Para actualizar el estado del turno en la UI
 
     // Constructor para recibir el TextView desde la actividad
@@ -20,40 +20,49 @@ public class cliente {
     }
 
     public void conectarServidor() {
-        try {
-            // Intentamos conectar con el servidor
-            socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
-            System.out.println("Conectado al servidor: " + SERVER_ADDRESS + " en el puerto " + SERVER_PORT);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // Intentamos conectar con el servidor
+                    socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
+                    System.out.println("Conectado al servidor: " + SERVER_ADDRESS + " en el puerto " + SERVER_PORT);
 
-            // Establecer los flujos de entrada y salida
-            in = new DataInputStream(socket.getInputStream());
-            out = new DataOutputStream(socket.getOutputStream());
+                    // Establecer los flujos de entrada y salida
+                    in = new DataInputStream(socket.getInputStream());
+                    out = new DataOutputStream(socket.getOutputStream());
 
-            // Leer mensaje de bienvenida del servidor
-            String serverMessage = in.readUTF();
-            System.out.println("Servidor: " + serverMessage);
+                    // Enviar solicitud de unión a la sala
+                    out.writeUTF("UNIR_SALA");
+                    out.flush();  // Asegurarse de que el mensaje se envíe inmediatamente
 
-            // Enviar solicitud de unión a la sala
-            out.writeUTF("Solicitud de unión a la sala");
-            out.flush();  // Asegurarse de que el mensaje se envíe inmediatamente
+                    // Esperar la respuesta del servidor
+                    String response = in.readUTF();
+                    if (response.equals("SALA_OK")) {
+                        System.out.println("Unido correctamente a la sala.");
+                        // Enviar un mensaje para preguntar el estado del juego
+                        out.writeUTF("ESTADO_JUEGO");
+                        out.flush();
+                        // Iniciar escucha de mensajes del servidor
+                        escucharServidor();
+                    } else if (response.equals("SALA_LLENA")) {
+                        System.out.println("La sala está llena.");
+                        // Mostrar mensaje de error o redirigir a otra actividad
+                        actualizarUI("Sala llena, intenta más tarde.");
+                    } else {
+                        System.out.println("No se pudo unir a la sala: " + response);
+                    }
 
-            // Esperar la respuesta del servidor
-            String response = in.readUTF();
-            if (response.equals("OK")) {
-                System.out.println("Unido correctamente a la sala.");
-                // Iniciar escucha de mensajes del servidor
-                escucharServidor();
-            } else {
-                System.out.println("No se pudo unir a la sala: " + response);
+                } catch (IOException e) {
+                    System.out.println("No se pudo conectar al servidor: " + e.getMessage());
+                    e.printStackTrace();
+                }
             }
-
-        } catch (IOException e) {
-            System.out.println("No se pudo conectar al servidor: " + e.getMessage());
-            e.printStackTrace();
-        }
+        }).start();
     }
 
-    // Método para escuchar mensajes del servidor (manejo de turnos)
+
+    // Método para escuchar mensajes del servidor (manejo de turnos y estado del juego)
     private void escucharServidor() {
         new Thread(() -> {
             try {
@@ -67,6 +76,15 @@ public class cliente {
                     } else if ("ESPERA_TURNO".equals(serverMessage)) {
                         esMiTurno = false;
                         actualizarUI("Espera tu turno...");
+                    } else if ("INICIO_JUEGO".equals(serverMessage)) {
+                        // El juego está listo para comenzar
+                        actualizarUI("¡El juego ha comenzado! Espera tu turno.");
+                    } else if ("SALA_LISTA".equals(serverMessage)) {
+                        // La sala está lista para comenzar
+                        actualizarUI("Sala lista, esperando turno.");
+                    } else if ("SALA_NO_LISTA".equals(serverMessage)) {
+                        // La sala no está lista para empezar (puede ser un mensaje de espera)
+                        actualizarUI("Esperando que la sala esté lista.");
                     }
                 }
             } catch (IOException e) {

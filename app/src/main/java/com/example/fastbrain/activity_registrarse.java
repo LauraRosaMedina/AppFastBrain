@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,6 +50,10 @@ public class activity_registrarse extends AppCompatActivity {
             String email = emailField.getText().toString();
             String password = passwordField.getText().toString();
 
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(activity_registrarse.this, "Formato de correo inválido", Toast.LENGTH_SHORT).show();
+                return;
+            }
             // Llamar al método de agregarUsuario de ConexionBBDD, pasando el callback
             conexionBBDD.agregarUsuario(email, password, new ConexionBBDD.RegistroCallback() {
                 @Override
@@ -61,6 +66,7 @@ public class activity_registrarse extends AppCompatActivity {
                 public void onRegistroFallido() {
                     // Cuando el registro falla, cambiamos el estado a false
                     registroExitoso = false;
+                    Toast.makeText(activity_registrarse.this, "El usuario ya existe", Toast.LENGTH_SHORT).show();
                 }
             });
 

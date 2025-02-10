@@ -36,11 +36,14 @@ dependencies {
     implementation libs.material
     implementation libs.activity
     implementation libs.constraintlayout
+    implementation libs.firebase.crashlytics.buildtools
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
     implementation libs.firebase.database  // Para Realtime Database, por ejemplo
     implementation libs.firebase.bom
     implementation (libs.firebase.auth)
+    implementation 'com.google.code.gson:gson:2.10.1' // Última versión de Gson
+
 
 }

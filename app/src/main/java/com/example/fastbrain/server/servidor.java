@@ -51,14 +51,13 @@ public class servidor {
 
     // Método para iniciar los turnos cuando hay al menos 2 jugadores
     private static void iniciarTurnos() {
-        if (players.size() >= 2) {
-            if (turnoActual == -1) { // Solo asignar turno inicial si aún no se ha hecho
-                turnoActual = new Random().nextInt(players.size());
-                System.out.println("Turno inicial para el jugador: " + turnoActual);
-            }
-            actualizarTurnos();
+        if (players.size() >= 2 && turnoActual == -1) { // Solo asignar turno inicial si hay al menos 2 jugadores y el turno no ha sido asignado aún
+            turnoActual = new Random().nextInt(players.size()); // Asigna un turno aleatorio a uno de los jugadores
+            System.out.println("Turno inicial para el jugador: " + turnoActual);
+            actualizarTurnos();  // Llama al método para notificar a los jugadores el turno
         }
     }
+
 
     // Método para actualizar turno
     private static void actualizarTurnos() {
@@ -82,9 +81,11 @@ public class servidor {
         private Socket clientSocket;
         private DataInputStream in;
         private DataOutputStream out;
+        private servidor servidorInstance;
 
         public ClientHandler(Socket socket) {
             this.clientSocket = socket;
+            this.servidorInstance = servidorInstance;
         }
 
         @Override
@@ -95,6 +96,9 @@ public class servidor {
 
                 out.writeUTF("¡Bienvenido al servidor! Esperando a otros jugadores...");
                 out.writeUTF("OK"); // Confirmación para el cliente
+
+                // Notificar a los jugadores sobre el código de la sala
+                out.writeUTF("Código de sala: " + servidorInstance.getCodigoSala());
 
                 while (true) {
                     String message = in.readUTF(); // Escuchar mensajes del cliente

@@ -2,7 +2,6 @@ package com.example.fastbrain;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Color;
@@ -28,12 +27,12 @@ public class activity_jugar extends AppCompatActivity {
     private ImageButton botonPerfil; // Botón de perfil
     private LinearLayout cuadroJugar;
     private TextView turnoTextView; // Referencia al TextView de turno
-    private boolean esMiTurno = false; // Variable para controlar el turno
+    private boolean esMiTurno = true; // Variable para controlar el turno
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
 
-    private static final String SERVER_ADDRESS = "10.192.116.186"; // IP del servidor
+    private static final String SERVER_ADDRESS = "10.192.117.26"; // IP del servidor
     private static final int SERVER_PORT = 12345; // Puerto del servidor
 
     private int[] colores = {
@@ -60,13 +59,14 @@ public class activity_jugar extends AppCompatActivity {
         // Recibir datos desde otra actividad
         int codigoSala = getIntent().getIntExtra("codigo_sala", -1);
         String emailUsuario = getIntent().getStringExtra("email");
+        esMiTurno = getIntent().getBooleanExtra("es_mi_turno", false); // Obtener el estado del turno
 
         // Mostrar código de sala y email del usuario
         emailUsuarioTextView.setText(codigoSala != -1 ? "Código de sala: " + codigoSala : "Código de sala no disponible.");
         usuarioTextView.setText(emailUsuario != null && !emailUsuario.isEmpty() ? "Email del usuario: " + emailUsuario : "Email no disponible.");
 
-
-
+        // Actualizar el TextView en base a si es tu turno o no
+        actualizarTurno();
 
         // Conectar al servidor
         new Thread(this::conectarServidor).start();
@@ -85,7 +85,8 @@ public class activity_jugar extends AppCompatActivity {
             startActivity(intent);
         });
 
-
+        // Llamada para configurar animación de colores
+        configurarAnimacionColor();
     }
 
     private void conectarServidor() {
@@ -112,14 +113,14 @@ public class activity_jugar extends AppCompatActivity {
                 if ("TURNO_ACTIVO".equals(mensaje)) {
                     runOnUiThread(() -> {
                         esMiTurno = true;
-                        turnoTextView.setText("¡Es tu turno!");
+                        actualizarTurno();
                         Log.d("ACTUALIZACION_UI", "Es tu turno!");
                         Toast.makeText(activity_jugar.this, "¡Es tu turno!", Toast.LENGTH_SHORT).show();
                     });
                 } else if ("ESPERA_TURNO".equals(mensaje)) {
                     runOnUiThread(() -> {
                         esMiTurno = false;
-                        turnoTextView.setText("Espera tu turno...");
+                        actualizarTurno();
                         Log.d("ACTUALIZACION_UI", "Espera tu turno...");
                         Toast.makeText(activity_jugar.this, "Espera tu turno...", Toast.LENGTH_SHORT).show();
                     });
@@ -130,63 +131,64 @@ public class activity_jugar extends AppCompatActivity {
         }
     }
 
+    // Método para actualizar el estado del turno en la UI
+    private void actualizarTurno() {
+        Log.d("ACTUALIZACION_UI", "Actualizando turno. esMiTurno: " + esMiTurno);
+        if (esMiTurno) {
+            turnoTextView.setText("¡Es tu turno!");
+        } else {
+            turnoTextView.setText("Espera tu turno...");
+        }
+    }
+
     private void configurarAnimacionColor() {
         cuadroJugar.setOnClickListener(v -> {
-            Log.d("Turno", "Es mi turno: " + esMiTurno);  // Agregar esta línea para asegurarte de que es verdadero
+            Log.d("Turno", "Es mi turno: " + esMiTurno);  // Asegurarnos de que es el turno correcto
             if (esMiTurno) {
-                // Crear un nuevo hilo para manejar la animación
-                new Thread(() -> {
-                    // Crear animación de cambio de colores
-                    ValueAnimator colorAnim = ValueAnimator.ofArgb(
-                            Color.parseColor("#D50032"),
-                            Color.parseColor("#00FF00"),
-                            Color.parseColor("#4B5320"),
-                            Color.parseColor("#FFEB3B"),
-                            Color.parseColor("#1E90FF"),
-                            Color.parseColor("#D374FF")
-                    );
-                    colorAnim.setDuration(2000); // Duración de la animación
-                    colorAnim.setRepeatCount(ValueAnimator.INFINITE); // Repetir la animación
-                    colorAnim.setInterpolator(new android.view.animation.LinearInterpolator());
+                // Crear animación de cambio de colores
+                ValueAnimator colorAnim = ValueAnimator.ofArgb(
+                        Color.parseColor("#D50032"),
+                        Color.parseColor("#00FF00"),
+                        Color.parseColor("#4B5320"),
+                        Color.parseColor("#FFEB3B"),
+                        Color.parseColor("#1E90FF")
+                );
+                colorAnim.setDuration(2000); // Duración de la animación
+                colorAnim.setRepeatCount(0); // No repetir la animación
+                colorAnim.setInterpolator(new android.view.animation.LinearInterpolator());
 
-                    // Hacer la animación en el hilo principal para que la UI se actualice correctamente
-                    colorAnim.addUpdateListener(animator -> runOnUiThread(() -> cuadroJugar.setBackgroundColor((int) animator.getAnimatedValue())));
+                // Hacer la animación en el hilo principal para que la UI se actualice correctamente
+                colorAnim.addUpdateListener(animator -> cuadroJugar.setBackgroundColor((int) animator.getAnimatedValue()));
 
-                    colorAnim.start();
+                colorAnim.start();
 
-                    // Después de que se termine la animación, seleccionamos un color aleatorio
-                    colorAnim.addListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
+                // Después de que se termine la animación, seleccionamos un color aleatorio
+                colorAnim.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
 
-                            // Detener la animación y seleccionar un color aleatorio
-                            int colorSeleccionado = colores[new Random().nextInt(colores.length)];
+                        // Detener la animación y seleccionar un color aleatorio
+                        int colorSeleccionado = colores[new Random().nextInt(colores.length)];
 
-                            // Realizar la actualización de UI en el hilo principal
-                            runOnUiThread(() -> {
-                                cuadroJugar.setBackgroundColor(colorSeleccionado);
+                        // Actualizar la UI con el color seleccionado
+                        cuadroJugar.setBackgroundColor(colorSeleccionado);
 
-                                // Asociar el color con la categoría
-                                String categoriaSeleccionada = obtenerCategoriaPorColor(colorSeleccionado);
+                        // Asociar el color con la categoría
+                        String categoriaSeleccionada = obtenerCategoriaPorColor(colorSeleccionado);
 
-                                // Iniciar la actividad de preguntas con la categoría seleccionada
-                                Intent intent = new Intent(activity_jugar.this, activity_preguntas.class);
-                                intent.putExtra("categoria", categoriaSeleccionada); // Pasamos la categoría como extra
-                                startActivity(intent);
-                            });
-                        }
-                    });
-                }).start();  // Iniciar el hilo para la animación
+                        // Iniciar la actividad de preguntas con la categoría seleccionada
+                        Intent intent = new Intent(activity_jugar.this, activity_preguntas.class);
+                        intent.putExtra("categoria", categoriaSeleccionada); // Pasamos la categoría como extra
+                        startActivity(intent);
+                    }
+                });
             } else {
+                // Si no es el turno correcto
                 runOnUiThread(() -> Toast.makeText(activity_jugar.this, "No es tu turno, espera...", Toast.LENGTH_SHORT).show());
             }
         });
     }
-
-
-
-
 
     private String obtenerCategoriaPorColor(int color) {
         // Aquí asociamos el color con la categoría correspondiente
@@ -200,13 +202,9 @@ public class activity_jugar extends AppCompatActivity {
             return "Risas y Memes";
         } else if (color == Color.parseColor("#1E90FF")) {
             return "Gamer";
-        } else if (color == Color.parseColor("#D374FF")) {
-            return "Random";
         }
-        return "Random"; // Si no es ninguno de estos colores, por defecto asignamos "Random"
+        return "Cine"; // Si no es ninguno de estos colores, por defecto asignamos "Random"
     }
-
-
 
     private void finalizarTurno() {
         new Thread(() -> {
@@ -217,7 +215,7 @@ public class activity_jugar extends AppCompatActivity {
                 }
                 runOnUiThread(() -> {
                     esMiTurno = false;
-                    turnoTextView.setText("Turno finalizado. Espera tu turno...");
+                    actualizarTurno();
                     Toast.makeText(activity_jugar.this, "Turno finalizado, espera tu turno...", Toast.LENGTH_SHORT).show();
                 });
             } catch (IOException e) {

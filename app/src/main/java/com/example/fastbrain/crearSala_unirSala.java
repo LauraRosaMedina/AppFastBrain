@@ -16,6 +16,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.fastbrain.client.cliente;
+
 public class crearSala_unirSala extends AppCompatActivity {
 
     @Override
@@ -60,7 +62,7 @@ public class crearSala_unirSala extends AppCompatActivity {
             finish();
         });
 
-
+        // Botón Unir Sala
         Button boton_unirSala = findViewById(R.id.boton_unirSala);
         boton_unirSala.setOnClickListener(v -> {
             // Obtener el código de la sala desde el EditText
@@ -69,10 +71,20 @@ public class crearSala_unirSala extends AppCompatActivity {
                 // Intentar convertir el código a int
                 int codigoJuego = Integer.parseInt(codigoSalaString);
 
-                // Pasar el código y el email al Intent para activity_jugar
+                // Conectamos al servidor cuando el jugador se une a una sala
+                cliente cliente = new cliente(null);  // Pasar 'null' porque no necesitamos el TextView en esta actividad
+                cliente.conectarServidor();  // Conectamos al servidor
+
+                // Crear el Intent para pasar a activity_jugar
                 Intent intent = new Intent(crearSala_unirSala.this, activity_jugar.class);
                 intent.putExtra("codigo_sala", codigoJuego);  // Agregar el código de la sala al Intent
                 intent.putExtra("email", email);  // Agregar el email al Intent
+
+                // Ahora enviamos el estado del turno (es_mi_turno)
+                // Aún no se sabe si es el turno del jugador, se espera una respuesta del servidor
+                intent.putExtra("es_mi_turno", true);  // Este valor se ajustará cuando se reciba la información del servidor
+
+                // Pasar a la pantalla de juego
                 startActivity(intent);
                 finish();
             } catch (NumberFormatException e) {
@@ -81,12 +93,9 @@ public class crearSala_unirSala extends AppCompatActivity {
             }
         });
 
-
         // Icono de perfil (arriba a la derecha)
         ImageView iconoPerfil = findViewById(R.id.boton_perfil);
-        iconoPerfil.setOnClickListener(v ->
-
-        {
+        iconoPerfil.setOnClickListener(v -> {
             Intent intent = new Intent(crearSala_unirSala.this, activity_perfil.class);
             startActivity(intent);
         });

@@ -1,0 +1,11 @@
+<!-- res/drawable/pregunta_border.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFFFF"/> <!-- Color de fondo -->
+    <corners android:radius="16dp"/> <!-- Bordes redondeados -->
+    <stroke android:color="#4CAF50" android:width="4dp"/> <!-- Borde blanco de 4dp -->
+    <padding
+        android:left="16dp"
+        android:top="12dp"
+        android:right="16dp"
+        android:bottom="12dp"/> <!-- Padding para dar espacio al texto -->
+</shape>
