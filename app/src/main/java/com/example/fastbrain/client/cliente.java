@@ -5,13 +5,13 @@ import java.net.*;
 import android.widget.TextView;
 
 public class cliente {
-    private static final String SERVER_ADDRESS = "10.192.117.26"; // IP del servidor
+    private static final String SERVER_ADDRESS = "192.168.1.132"; // IP del servidor
     private static final int SERVER_PORT = 12345; // Puerto del servidor
 
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
-    private boolean esMiTurno = false; // Para saber si el jugador puede jugar
+    private boolean esMiTurno = true; // Para saber si el jugador puede jugar
     private TextView turnoTextView; // Para actualizar el estado del turno en la UI
     private int codigoSala; // Código de sala
 
@@ -87,18 +87,18 @@ public class cliente {
         }).start();
     }
 
-    // Método para manejar los mensajes del servidor
+    // En el método 'manejarMensajeServidor()' de la clase cliente.java:
     private void manejarMensajeServidor(String serverMessage) {
         System.out.println("Servidor: " + serverMessage);
 
         switch (serverMessage) {
             case "TURNO_ACTIVO":
                 esMiTurno = true;
-                actualizarUI("¡Es tu turno!");
+                actualizarUI("¡Es tu turno!");  // Actualizar el TextView con el mensaje adecuado
                 break;
             case "ESPERA_TURNO":
                 esMiTurno = false;
-                actualizarUI("Espera tu turno...");
+                actualizarUI("Espera tu turno...");  // Mostrar que el jugador debe esperar
                 break;
             case "INICIO_JUEGO":
                 actualizarUI("¡El juego ha comenzado! Espera tu turno.");
@@ -114,7 +114,6 @@ public class cliente {
                 break;
         }
     }
-
     // Método para enviar al servidor que el turno ha finalizado
     public void enviarFinTurno() {
         if (esMiTurno) {
@@ -130,9 +129,14 @@ public class cliente {
     }
 
     // Método para actualizar la UI con mensajes de turno
-    private void actualizarUI(String mensaje) {
+    private void actualizarUI(final String mensaje) {
         if (turnoTextView != null) {
-            turnoTextView.post(() -> turnoTextView.setText(mensaje));
+            turnoTextView.post(new Runnable() {
+                @Override
+                public void run() {
+                    turnoTextView.setText(mensaje);  // Actualiza el TextView en la UI principal
+                }
+            });
         }
     }
 

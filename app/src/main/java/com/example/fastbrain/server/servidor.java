@@ -35,8 +35,11 @@ public class servidor {
                     new Thread(player).start();
 
                     // Si hay al menos 2 jugadores, iniciar los turnos
-                    if (players.size() >= 2) {
-                        iniciarTurnos();
+                    if (players.size() == 1) {
+                        // Asignar el primer turno al primer jugador conectado
+                        turnoActual = 0;
+                        System.out.println("Turno inicial asignado al jugador: " + turnoActual);
+                        actualizarTurnos();  // Llama al método para notificar a los jugadores el turno
                     }
                 } else {
                     // Rechazar al cliente si ya hay 4 jugadores
@@ -47,15 +50,6 @@ public class servidor {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        }
-    }
-
-    // Método para iniciar los turnos cuando hay al menos 2 jugadores
-    private static void iniciarTurnos() {
-        if (players.size() >= 2 && turnoActual == -1) { // Solo asignar turno inicial si hay al menos 2 jugadores y el turno no ha sido asignado aún
-            turnoActual = new Random().nextInt(players.size()); // Asigna un turno aleatorio a uno de los jugadores
-            System.out.println("Turno inicial para el jugador: " + turnoActual);
-            actualizarTurnos();  // Llama al método para notificar a los jugadores el turno
         }
     }
 
