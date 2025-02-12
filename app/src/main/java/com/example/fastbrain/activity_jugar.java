@@ -8,10 +8,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,14 +27,15 @@ public class activity_jugar extends AppCompatActivity {
     private Button btnSalir;
     private ImageButton botonPerfil;
     private LinearLayout cuadroJugar;
-    private TextView turnoTextView;
-    private boolean esMiTurno = true;
+    private boolean esMiTurno = false;
+    private TextView emailUsuario;
+    private TextView codigoGenerado;
 
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
 
-    private static final String SERVER_ADDRESS = "192.168.1.132";
+    private static final String SERVER_ADDRESS = "10.192.117.26";
     private static final int SERVER_PORT = 12345;
 
     private final int[] colores = {
@@ -51,24 +52,20 @@ public class activity_jugar extends AppCompatActivity {
         setContentView(R.layout.activity_jugar);
 
         // Inicializar vistas
-        TextView emailUsuarioTextView = findViewById(R.id.emailUsuarioTextView);
-        TextView usuarioTextView = findViewById(R.id.usuarioTextView);
         cuadroJugar = findViewById(R.id.cuadrojugar);
         btnSalir = findViewById(R.id.btnSalir);
         botonPerfil = findViewById(R.id.boton_perfil);
-        turnoTextView = findViewById(R.id.turnoTextView);
 
+        //Lógica de email
+        emailUsuario = findViewById(R.id.emailUsuario);  // Usar la variable de clase
         // Recibir datos desde la otra actividad
-        int codigoSala = getIntent().getIntExtra("codigo_sala", -1);
-        String emailUsuario = getIntent().getStringExtra("email");
-        esMiTurno = getIntent().getBooleanExtra("es_mi_turno", true);
+        String correo = getIntent().getStringExtra("email");
+        emailUsuario.setText("Email de Usuario:  " + correo);
 
-        // Mostrar código de sala y email del usuario
-        emailUsuarioTextView.setText(codigoSala != -1 ? "Código de sala: " + codigoSala : "Código de sala no disponible.");
-        usuarioTextView.setText(emailUsuario != null && !emailUsuario.isEmpty() ? "Email del usuario: " + emailUsuario : "Email no disponible.");
-
-        // Actualizar el estado del turno
-        actualizarTurno();
+        //Lógica código
+        codigoGenerado = findViewById(R.id.codigoGenerado);  // Usar la variable de clase
+        int codigo = getIntent().getIntExtra("codigo_sala", -1);
+        codigoGenerado.setText("Código:  " + codigo);
 
         // Conectar al servidor
         new Thread(this::conectarServidor).start();
@@ -96,6 +93,10 @@ public class activity_jugar extends AppCompatActivity {
             // Hilo para escuchar mensajes del servidor
             new Thread(this::escucharServidor).start();
 
+            // Notificar al servidor que el jugador se ha conectado
+            out.writeUTF("UNIR_SALA");
+            out.flush();
+
         } catch (IOException e) {
             Log.e("Servidor", "Error al conectar con el servidor", e);
             runOnUiThread(() -> Toast.makeText(activity_jugar.this, "Error al conectar con el servidor", Toast.LENGTH_SHORT).show());
@@ -116,16 +117,11 @@ public class activity_jugar extends AppCompatActivity {
                         esMiTurno = false;
                         Toast.makeText(activity_jugar.this, "Espera tu turno...", Toast.LENGTH_SHORT).show();
                     }
-                    actualizarTurno();
                 });
             }
         } catch (IOException e) {
             Log.e("Servidor", "Error en la comunicación con el servidor", e);
         }
-    }
-
-    private void actualizarTurno() {
-        turnoTextView.setText(esMiTurno ? "¡Es tu turno!" : "Espera tu turno...");
     }
 
     private void configurarAnimacionColor() {
@@ -158,6 +154,8 @@ public class activity_jugar extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
+            finalizarTurno();
         });
     }
 
@@ -187,7 +185,6 @@ public class activity_jugar extends AppCompatActivity {
                 }
                 runOnUiThread(() -> {
                     esMiTurno = false;
-                    actualizarTurno();
                     Toast.makeText(activity_jugar.this, "Turno finalizado, espera tu turno...", Toast.LENGTH_SHORT).show();
                 });
             } catch (IOException e) {

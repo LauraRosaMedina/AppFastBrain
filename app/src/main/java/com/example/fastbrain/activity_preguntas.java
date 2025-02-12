@@ -112,7 +112,7 @@ public class activity_preguntas extends AppCompatActivity {
         } else {
             Log.d("Respuesta", "Incorrecto");
             Toast.makeText(this, "Respuesta incorrecta", Toast.LENGTH_SHORT).show(); // Toast para respuesta incorrecta
-            // Si la respuesta es incorrecta, ir a la actividad 'activity_jugar'
+            // Si la respuesta es incorrecta o no hay tiempo, ir a la actividad 'activity_jugar' y perder el turno
             Intent intent = new Intent(activity_preguntas.this, activity_jugar.class);
             startActivity(intent);
             finish();  // Terminar la actividad actual para que no se quede en la pila
@@ -131,7 +131,8 @@ public class activity_preguntas extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                // Cuando el temporizador llega a cero, ir a la actividad 'activity_jugar'
+                // Cuando el temporizador llega a cero, perder el turno y regresar a 'activity_jugar'
+                Toast.makeText(activity_preguntas.this, "¡Tiempo agotado!", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(activity_preguntas.this, activity_jugar.class);
                 startActivity(intent);
                 finish();  // Terminar la actividad actual para que no se quede en la pila

@@ -11,13 +11,8 @@ public class servidor {
     private static Semaphore semaphore = new Semaphore(MAX_PLAYERS); // Controla el acceso concurrente
     private static List<ClientHandler> players = Collections.synchronizedList(new ArrayList<>()); // Lista de jugadores
     private static int turnoActual = -1; // Índice del jugador en turno
-    private int codigoSala;  // Código generado para la sala
 
     public void ejecutarServidor() {
-        // Generar código aleatorio para la sala
-        codigoSala = new Random().nextInt(9000) + 1000; // Números entre 1000 y 9999
-        System.out.println("Código de sala generado: " + codigoSala);
-
         try (ServerSocket serverSocket = new ServerSocket(PORT, 50, InetAddress.getByName("0.0.0.0"))) {
             System.out.println("Servidor iniciado. Esperando conexiones en el puerto " + PORT + "...");
 
@@ -35,16 +30,12 @@ public class servidor {
                     new Thread(player).start();
 
                     // Si hay al menos 2 jugadores, iniciar los turnos
-                    if (players.size() == 1) {
-                        // Asignar el primer turno al primer jugador conectado
-                        turnoActual = 0;
-                        System.out.println("Turno inicial asignado al jugador: " + turnoActual);
-                        actualizarTurnos();  // Llama al método para notificar a los jugadores el turno
+                    if (players.size() == 2) {
+                        iniciarTurnos();
                     }
                 } else {
-                    // Rechazar al cliente si ya hay 4 jugadores
-                    DataOutputStream out = new DataOutputStream(clientSocket.getOutputStream());
-                    out.writeUTF("Servidor lleno. Inténtelo más tarde.");
+                    // Si el servidor ha alcanzado el límite de jugadores, rechazar la conexión
+                    System.out.println("Se ha alcanzado el límite de jugadores.");
                     clientSocket.close();
                 }
             }
@@ -53,104 +44,94 @@ public class servidor {
         }
     }
 
-    // Método para actualizar turno
-    private static void actualizarTurnos() {
+    private void iniciarTurnos() {
+        // El primer jugador en conectarse obtiene el primer turno
+        turnoActual = 0;
+
+        for (ClientHandler player : players) {
+            player.enviarMensaje("TURNO_ACTIVO");
+        }
+    }
+
+    public synchronized void avanzarTurno() {
+        // Avanzar al siguiente jugador
+        turnoActual = (turnoActual + 1) % players.size();
+        System.out.println("Es el turno del jugador " + (turnoActual + 1));
+
+        // Informar a todos los jugadores sobre el cambio de turno
         for (int i = 0; i < players.size(); i++) {
             ClientHandler player = players.get(i);
             if (i == turnoActual) {
-                player.enviarMensaje("TURNO_ACTIVO"); // Notifica al jugador que es su turno
+                player.enviarMensaje("TURNO_ACTIVO");
             } else {
-                player.enviarMensaje("ESPERA_TURNO"); // Notifica a los demás que esperen
+                player.enviarMensaje("ESPERA_TURNO");
             }
         }
     }
 
-    // Método para obtener el código generado
-    public int getCodigoSala() {
-        return codigoSala;
-    }
-
-    // Clase interna para manejar la comunicación con cada cliente
-    static class ClientHandler implements Runnable {
-        private Socket clientSocket;
+    // Clase interna para manejar la comunicación con los clientes
+    private class ClientHandler implements Runnable {
+        private Socket socket;
         private DataInputStream in;
         private DataOutputStream out;
-        private servidor servidorInstance;
+        private servidor server;
 
-        public ClientHandler(Socket socket, servidor serverInstance) {
-            this.clientSocket = socket;
-            this.servidorInstance = serverInstance;  // Inicializar correctamente
+        public ClientHandler(Socket socket, servidor server) {
+            this.socket = socket;
+            this.server = server;
         }
 
         @Override
         public void run() {
             try {
-                in = new DataInputStream(clientSocket.getInputStream());
-                out = new DataOutputStream(clientSocket.getOutputStream());
+                in = new DataInputStream(socket.getInputStream());
+                out = new DataOutputStream(socket.getOutputStream());
 
-                out.writeUTF("¡Bienvenido al servidor! Esperando a otros jugadores...");
-                out.writeUTF("OK"); // Confirmación para el cliente
-                out.writeUTF("Código de sala: " + servidorInstance.getCodigoSala());
+                // Recibir mensaje de unión a la sala
+                String mensaje = in.readUTF();
+                if (mensaje.equals("UNIR_SALA")) {
+                    // Esperar el turno
+                    out.writeUTF("ESPERA_TURNO");
+                    out.flush();
+                }
 
                 while (true) {
-                    String message = in.readUTF(); // Escuchar mensajes del cliente
-                    System.out.println("Mensaje del cliente: " + message);
+                    // Leer mensajes de los jugadores y responder
+                    String input = in.readUTF();
 
-                    if ("TURNO_FINALIZADO".equals(message)) {
-                        avanzarTurno();
+                    if (input.equals("TURNO_FINALIZADO")) {
+                        server.avanzarTurno();  // Cambiar el turno
                     }
                 }
             } catch (IOException e) {
-                System.out.println("Jugador desconectado.");
-                cerrarConexion();  // Llamamos al método al detectar una desconexión
-            }
-        }
-
-        // Método para cerrar la conexión del cliente
-        public void cerrarConexion() {
-            try {
-                if (clientSocket != null && !clientSocket.isClosed()) {
-                    clientSocket.close();
-                    System.out.println("Conexión cerrada con cliente.");
-                }
-            } catch (IOException e) {
-                System.out.println("Error al cerrar conexión.");
+                e.printStackTrace();
             } finally {
-                players.remove(this);
-                semaphore.release();
-                if (!players.isEmpty()) {
-                    ajustarTurnosTrasDesconexion();
+                // Cerrar la conexión con el cliente
+                try {
+                    in.close();
+                    out.close();
+                    socket.close();
+                    semaphore.release();
+                    players.remove(this);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }
 
-        // Método para enviar mensajes a los clientes
+        // Método para enviar un mensaje al cliente
         public void enviarMensaje(String mensaje) {
             try {
                 out.writeUTF(mensaje);
+                out.flush();
             } catch (IOException e) {
-                System.out.println("Error al enviar mensaje al cliente.");
+                e.printStackTrace();
             }
         }
     }
 
-    private static synchronized void avanzarTurno() {
-        if (!players.isEmpty()) {
-            turnoActual = (turnoActual + 1) % players.size();
-            System.out.println("Turno cambiado al jugador: " + turnoActual);
-            actualizarTurnos();
-        }
-    }
-
-    // Método para reajustar los turnos cuando un jugador se desconecta
-    private static void ajustarTurnosTrasDesconexion() {
-        if (players.isEmpty()) {
-            turnoActual = -1; // No hay jugadores, no hay turnos
-            return;
-        }
-        if (turnoActual >= players.size()) {
-            turnoActual = 0; // Resetear al primer jugador si el actual se ha ido
-        }
-        actualizarTurnos();
+    public static void main(String[] args) {
+        servidor server = new servidor();
+        server.ejecutarServidor();
     }
 }

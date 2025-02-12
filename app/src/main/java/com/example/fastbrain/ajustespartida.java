@@ -1,4 +1,4 @@
-package com.example.fastbrain;
+/*package com.example.fastbrain;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -117,4 +117,4 @@ public class ajustespartida extends AppCompatActivity {
 
 
 
-}
+}*/

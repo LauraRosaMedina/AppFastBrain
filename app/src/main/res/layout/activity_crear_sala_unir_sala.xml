@@ -96,7 +96,7 @@
             app:layout_constraintTop_toBottomOf="@+id/icono_videogame" />
 
         <EditText
-            android:id="@+id/edittextsala"
+            android:id="@+id/textViewCodigoSala"
             android:layout_width="170dp"
             android:layout_height="60dp"
             android:background="@drawable/edittext_bordermalva"

@@ -1,146 +1,84 @@
 package com.example.fastbrain.client;
 
-import java.io.*;
-import java.net.*;
-import android.widget.TextView;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 
 public class cliente {
-    private static final String SERVER_ADDRESS = "192.168.1.132"; // IP del servidor
+    private static final String SERVER_ADDRESS = "10.192.117.26"; // IP del servidor
     private static final int SERVER_PORT = 12345; // Puerto del servidor
 
     private Socket socket;
     private DataInputStream in;
     private DataOutputStream out;
-    private boolean esMiTurno = true; // Para saber si el jugador puede jugar
-    private TextView turnoTextView; // Para actualizar el estado del turno en la UI
-    private int codigoSala; // Código de sala
+    private boolean esMiTurno = false; // Estado del turno
 
-    // Constructor para recibir el TextView desde la actividad
-    public cliente(TextView turnoTextView) {
-        this.turnoTextView = turnoTextView;
+    public cliente() {
+        // Constructor vacío, ya no recibe TextView
     }
 
     public void conectarServidor() {
         if (socket != null && !socket.isClosed()) {
             System.out.println("Ya estás conectado al servidor.");
-            return;  // No intenta reconectarse si la conexión sigue activa
+            return;
         }
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
-                    System.out.println("Conectado al servidor: " + SERVER_ADDRESS + " en el puerto " + SERVER_PORT);
+        new Thread(() -> {
+            try {
+                socket = new Socket(SERVER_ADDRESS, SERVER_PORT);
+                System.out.println("Conectado al servidor: " + SERVER_ADDRESS + " en el puerto " + SERVER_PORT);
 
-                    in = new DataInputStream(socket.getInputStream());
-                    out = new DataOutputStream(socket.getOutputStream());
+                in = new DataInputStream(socket.getInputStream());
+                out = new DataOutputStream(socket.getOutputStream());
 
-                    out.writeUTF("UNIR_SALA");
-                    out.flush();
+                out.writeUTF("UNIR_SALA");
+                out.flush();
 
-                    String response = in.readUTF();
-                    if (response.startsWith("Código de sala:")) {
-                        codigoSala = Integer.parseInt(response.split(":")[1].trim());
-                        out.writeUTF("UNIR_SALA" + codigoSala);
-                        out.flush();
-
-                        String salaResponse = in.readUTF();
-                        if (salaResponse.equals("SALA_OK")) {
-                            System.out.println("Unido correctamente a la sala.");
-                            out.writeUTF("ESTADO_JUEGO");
-                            out.flush();
-                            escucharServidor();
-                        } else if (salaResponse.equals("SALA_LLENA")) {
-                            System.out.println("La sala está llena.");
-                            actualizarUI("Sala llena, intenta más tarde.");
-                            socket.close();
-                        } else {
-                            System.out.println("No se pudo unir a la sala: " + salaResponse);
-                            socket.close();
-                        }
-                    }
-                } catch (IOException e) {
-                    System.out.println("No se pudo conectar al servidor: " + e.getMessage());
-                    actualizarUI("Error al conectar con el servidor.");
+                String response = in.readUTF();
+                if ("TURNO_ACTIVO".equals(response)) {
+                    esMiTurno = true;
+                    System.out.println("¡Es tu turno!");
                 }
+
+                escucharServidor();
+            } catch (IOException e) {
+                System.out.println("Error al conectar con el servidor: " + e.getMessage());
             }
         }).start();
     }
 
-    // Método mejorado para escuchar mensajes del servidor
     private void escucharServidor() {
         new Thread(() -> {
             try {
                 while (true) {
-                    if (socket == null || socket.isClosed()) {
-                        actualizarUI("Desconectado del servidor.");
-                        break;
-                    }
-
                     String serverMessage = in.readUTF();
                     manejarMensajeServidor(serverMessage);
                 }
             } catch (IOException e) {
-                actualizarUI("Conexión perdida con el servidor.");
+                System.out.println("Conexión perdida con el servidor.");
             }
         }).start();
     }
 
-    // En el método 'manejarMensajeServidor()' de la clase cliente.java:
     private void manejarMensajeServidor(String serverMessage) {
         System.out.println("Servidor: " + serverMessage);
 
         switch (serverMessage) {
             case "TURNO_ACTIVO":
                 esMiTurno = true;
-                actualizarUI("¡Es tu turno!");  // Actualizar el TextView con el mensaje adecuado
+                System.out.println("¡Es tu turno!");
                 break;
             case "ESPERA_TURNO":
                 esMiTurno = false;
-                actualizarUI("Espera tu turno...");  // Mostrar que el jugador debe esperar
-                break;
-            case "INICIO_JUEGO":
-                actualizarUI("¡El juego ha comenzado! Espera tu turno.");
-                break;
-            case "SALA_LISTA":
-                actualizarUI("Sala lista, esperando turno.");
-                break;
-            case "SALA_NO_LISTA":
-                actualizarUI("Esperando que la sala esté lista.");
+                System.out.println("Espera tu turno...");
                 break;
             default:
-                actualizarUI("Mensaje desconocido: " + serverMessage);
+                System.out.println("Mensaje desconocido: " + serverMessage);
                 break;
         }
     }
-    // Método para enviar al servidor que el turno ha finalizado
-    public void enviarFinTurno() {
-        if (esMiTurno) {
-            try {
-                out.writeUTF("TURNO_FINALIZADO");
-                out.flush();
-                esMiTurno = false;
-                actualizarUI("Turno finalizado, esperando...");
-            } catch (IOException e) {
-                System.out.println("Error al enviar mensaje de fin de turno.");
-            }
-        }
-    }
 
-    // Método para actualizar la UI con mensajes de turno
-    private void actualizarUI(final String mensaje) {
-        if (turnoTextView != null) {
-            turnoTextView.post(new Runnable() {
-                @Override
-                public void run() {
-                    turnoTextView.setText(mensaje);  // Actualiza el TextView en la UI principal
-                }
-            });
-        }
-    }
-
-    // Método para desconectar del servidor
     public void desconectarServidor() {
         try {
             if (socket != null && !socket.isClosed()) {
