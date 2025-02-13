@@ -72,6 +72,26 @@ FastBrain implementa un modelo de arquitectura cliente/servidor para gestionar l
 
 - Regístrate o inicia sesión para comenzar a jugar.
 
+### ⚠️ Posibles Errores
+
+A continuación, se describen algunos problemas comunes que pueden surgir al utilizar el sistema y cómo solucionarlos.
+- Todos los dispositivos deben estar en la misma red WiFi  
+Para que los dispositivos puedan conectarse al servidor correctamente, **es necesario que todos estén en la misma red WiFi**.  
+Si un dispositivo está en una red diferente (por ejemplo, datos móviles o una red de invitados), no podrá establecer conexión con el servidor.
+- Solución
+
+  ✔️ Asegúrate de que todos los jugadores estén conectados a la misma red WiFi antes de iniciar la sesión.  
+  ✔️ Si un dispositivo no se conecta, revisa su configuración de red y cambia a la correcta.
+  
+- Caída del servidor si los jugadores tardan demasiado en conectarse
+Si los jugadores tardan mucho en unirse a la partida, el servidor puede detectar inactividad y cerrarse automáticamente.  
+En este caso, los jugadores no podrán conectarse con el código proporcionado.
+- Solución
+
+  ✔️ Si el servidor se cae, todos los jugadores deben **salir de la sala** y volver a solicitar un **nuevo código de acceso**.  
+  ✔️ Intenta que todos los jugadores se conecten rápidamente después de generar la sala para evitar problemas.
+  
+
 ### ➰ Enlaces Relevantes
 
 - [Diagrama](https://docs.google.com/document/d/1CF8uj0QVe5bWVNxtwCUyPsgxawuLUAv9EURdut01XmA/edit?tab=t.0)
