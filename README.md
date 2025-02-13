@@ -1,10 +1,10 @@
 # FastBrain
 
-### Descripción
+### 📖 Descripción
 
 FastBrain es un juego de mesa digitalizado de tipo quiz/trivial que combina el aprendizaje y la competencia en tiempo real. Diseñado para ser jugado por hasta cuatro participantes, la aplicación permite responder preguntas de diversas categorías para acumular puntos. El primer jugador en alcanzar 300 puntos es declarado ganador.
 
-### Características Principales
+### 🖋️ Características Principales
 
 - Autenticación de usuarios: Registro e inicio de sesión mediante correo electrónico o Google, con almacenamiento en Firebase.
 
@@ -22,7 +22,7 @@ FastBrain es un juego de mesa digitalizado de tipo quiz/trivial que combina el a
 
 - Seguridad y optimización: Protección de datos con cifrado y gestión eficiente de recursos.
 
-### Tecnologías Utilizadas
+### 📺 Tecnologías Utilizadas
 
 - Lenguaje de Programación: Java.
 
@@ -42,7 +42,7 @@ FastBrain es un juego de mesa digitalizado de tipo quiz/trivial que combina el a
 
 - Documentación y Diseño de Usuario: Creación del manual de usuario con Behance, proporcionando una guía visual detallada para los jugadores.
 
-### Flujo de Navegación
+### ⏳ Flujo de Navegación
 
 - Inicio de Sesión y Registro: Los usuarios pueden registrarse o iniciar sesión con su correo electrónico o Google. La información de autenticación se almacena en Firebase.
 
@@ -50,7 +50,7 @@ FastBrain es un juego de mesa digitalizado de tipo quiz/trivial que combina el a
 
 - Pantalla de Juego: Los jugadores esperan su turno y, cuando les toca, pueden hacer clic en un cuadro de animación para revelar una pregunta. Cada pregunta pertenece a una categoría específica y tiene un límite de tiempo. Las respuestas correctas suman 50 puntos, mientras que las incorrectas restan 20 puntos. Si el temporizador llega a 0, el jugador pierde su turno. El primer jugador en alcanzar 300 puntos gana la partida.
 
-###Sistema Cliente/Servidor
+###  🎥 Sistema Cliente/Servidor
 
 FastBrain implementa un modelo de arquitectura cliente/servidor para gestionar las partidas en línea de manera eficiente:
 
@@ -62,7 +62,7 @@ FastBrain implementa un modelo de arquitectura cliente/servidor para gestionar l
 
 - Comunicación Cliente-Servidor: Cada cliente envía y recibe datos en tiempo real a través de sockets, permitiendo una experiencia de juego fluida.
 
-### Instalación y Uso
+### 📘 Instalación y Uso
 
 - Clona el repositorio: git clone https://github.com/LauraRosaMedina/AppFastBrain.git
 
@@ -72,17 +72,17 @@ FastBrain implementa un modelo de arquitectura cliente/servidor para gestionar l
 
 - Regístrate o inicia sesión para comenzar a jugar.
 
-### Enlaces Relevantes
+### ➰ Enlaces Relevantes
 
 - [Diagrama](https://docs.google.com/document/d/1CF8uj0QVe5bWVNxtwCUyPsgxawuLUAv9EURdut01XmA/edit?tab=t.0)
 - [Manual de Usuario](https://www.behance.net/gallery/219134773/FastBrain-Android)
 - [Documentación App FastBrain](https://docs.google.com/document/d/1_owfrJb_FkfqrTOzANhRUvSM1FwPEwSyEW7WRkQi65k/edit?usp=drive_link)
 
-### Autores
+### 👱‍♀️ Autores
 
 - Laura Rosa Medina
 - Davinia Rodríguez Portillo
 - Mar Romero Portillo
 
-### Licencia
+### 🏠 Licencia
 Este proyecto está bajo la licencia MIT.
