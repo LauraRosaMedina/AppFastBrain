@@ -1,0 +1,74 @@
+{
+  "Sobrenatural": [
+    {
+      "pregunta": "¿Cuál es el nombre del fantasma de Hogwarts que llora?",
+      "respuesta_correcta": "Myrtle la Llorona",
+      "opciones_incorrectas": ["Nick Casi Decapitado", "Peeves", "Barón Sanguinario"]
+    },
+    {
+      "pregunta": "¿Qué criatura mitológica es mitad hombre y mitad caballo?",
+      "respuesta_correcta": "Centauro",
+      "opciones_incorrectas": ["Minotauro", "Sirena", "Quimera"]
+    }
+  ],
+  "Animales": [
+    {
+      "pregunta": "¿Cuál es el mamífero más grande del mundo?",
+      "respuesta_correcta": "Ballena azul",
+      "opciones_incorrectas": ["Elefante", "Jirafa", "Hipopótamo"]
+    },
+    {
+      "pregunta": "¿Cuántas patas tiene una araña?",
+      "respuesta_correcta": "8",
+      "opciones_incorrectas": ["6", "10", "12"]
+    }
+  ],
+  "Cine": [
+    {
+      "pregunta": "¿Quién dirigió la película 'Titanic'?",
+      "respuesta_correcta": "James Cameron",
+      "opciones_incorrectas": ["Steven Spielberg", "Martin Scorsese", "Quentin Tarantino"]
+    },
+    {
+      "pregunta": "¿Cuál fue el primer largometraje animado de Disney?",
+      "respuesta_correcta": "Blancanieves y los siete enanitos",
+      "opciones_incorrectas": ["Pinocho", "Cenicienta", "La bella durmiente"]
+    }
+  ],
+  "Sabores del Mundo": [
+    {
+      "pregunta": "¿Qué tipo de pasta se usa en un 'spaghetti bolognese'?",
+      "respuesta_correcta": "Espaguetis",
+      "opciones_incorrectas": ["Lasaña", "Macarrones", "Fusilli"]
+    },
+    {
+      "pregunta": "¿De qué país es originaria la pizza?",
+      "respuesta_correcta": "Italia",
+      "opciones_incorrectas": ["Francia", "España", "Grecia"]
+    }
+  ],
+  "Risas y Memes": [
+    {
+      "pregunta": "¿Quién es conocido por crear los memes de 'Doge'?",
+      "respuesta_correcta": "Shiba Inu",
+      "opciones_incorrectas": ["Corgi", "Bulldog", "Pitbull"]
+    },
+    {
+      "pregunta": "¿En qué año se lanzó el meme de 'Distracted Boyfriend'?",
+      "respuesta_correcta": "2017",
+      "opciones_incorrectas": ["2015", "2018", "2016"]
+    }
+  ],
+  "Gamer": [
+    {
+      "pregunta": "¿En qué año se lanzó el videojuego 'The Legend of Zelda: Ocarina of Time'?",
+      "respuesta_correcta": "1998",
+      "opciones_incorrectas": ["2000", "1995", "2002"]
+    },
+    {
+      "pregunta": "¿Qué consola fue la primera en tener el videojuego 'Super Mario Bros'?",
+      "respuesta_correcta": "Nintendo Entertainment System",
+      "opciones_incorrectas": ["Game Boy", "Super Nintendo", "PlayStation"]
+    }
+  ]
+}

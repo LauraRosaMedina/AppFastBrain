@@ -6,4 +6,12 @@
     <color name="purpledark">#4B066B</color>
     <color name="naranja">#EB9C36</color>
     <color name="malva">#E9C2F2</color>
+
+    <!--colores para el layout-->
+    <color name="sobrenatural">#00FF00</color>
+    <color name="cine">#D50032</color>
+    <color name="sabores">#4B5320</color>
+    <color name="memes">#FFEB3B</color>
+    <color name="gamer">#1E90FF</color>
+    <color name="random">#D374FF</color>
 </resources>

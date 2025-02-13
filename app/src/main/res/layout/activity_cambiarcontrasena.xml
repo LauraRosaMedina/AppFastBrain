@@ -6,8 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".activity_perfil">
+    tools:context=".activity_cambiarcontrasena">
 
     <!-- Imagen del perfil -->
     <ImageView
@@ -22,88 +21,84 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.126" />
 
-    <!-- Título del perfil -->
+    <!-- Título -->
     <TextView
         android:id="@+id/loginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/perfil"
+        android:text="@string/cambiar_contrasena"
         android:textColor="@color/purple"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/roundButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImage"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
+
+
+    <EditText
+        android:id="@+id/emailField"
+        android:layout_width="356dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/edittext_bordernaranja"
+        android:fontFamily="sans-serif-smallcaps"
+        android:hint="@string/contrasenanueva"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/naranja"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/passwordField"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
-
-
-    <!-- Botón para cambiar contraseña -->
-
-    <!-- Botón para cerrar sesión -->
-    <Button
-        android:id="@+id/roundButton2"
+    <EditText
+        android:id="@+id/passwordField"
         android:layout_width="356dp"
         android:layout_height="55dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/edittext_bordernaranja"
+        android:fontFamily="sans-serif-smallcaps"
+        android:hint="@string/confirmarcontrasena"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/naranja"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/registerButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="356dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="116dp"
         android:backgroundTint="@color/naranja"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/cambiar_contrasena"
+        android:text="@string/guardarcambios"
         android:textColor="@color/purpledark"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.578" />
-
-    <!-- Switch para notificaciones -->
-    <Button
-        android:id="@+id/roundButton3"
-        android:layout_width="356dp"
-        android:layout_height="55dp"
-        android:backgroundTint="@color/naranja"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/cerrar_sesion"
-        android:textColor="@color/purpledark"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.707" />
-
-    <Switch
-        android:id="@+id/switch_example"
-        android:layout_width="177dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/notificaciones"
-        android:textColor="@color/purpledark"
-        android:textSize="18sp"
-        android:thumbTint="@color/naranja"
-        android:trackTint="@color/purple"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/roundButton3"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/button_reset"
         android:layout_width="73dp"
         android:layout_height="57dp"
+        android:layout_marginEnd="320dp"
+        android:layout_marginBottom="16dp"
         android:background="@null"
         android:contentDescription="@string/volver"
         android:src="@drawable/baseline_arrow_back_24"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="27dp"
-        tools:layout_editor_absoluteY="658dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

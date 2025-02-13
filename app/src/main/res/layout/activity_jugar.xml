@@ -2,12 +2,22 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/registerPage"
+    android:id="@+id/jugar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_gradient"
     tools:context=".activity_jugar">
 
+    <ImageView
+        android:id="@+id/imagenJugar"
+        android:layout_width="272dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/letrasfastbrain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/boton_perfil"
@@ -25,84 +35,58 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/configuracion_juego"
-        android:layout_width="331dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="128dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/jugar"
-        android:textAlignment="center"
-        android:textColor="@color/malva"
-        android:textSize="25sp"
-        android:textStyle="bold"
+        android:id="@+id/emailUsuario"
+        android:layout_width="343dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="132dp"
+        android:text="@string/emailusuarioconectado"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/codigoGenerado"
+        android:layout_width="345dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="184dp"
+        android:text="@string/usuarioconectado"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <LinearLayout
+        android:id="@+id/cuadrojugar"
+        android:layout_width="259dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="328dp"
+        android:background="@drawable/cuadro_transparente"
+        android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/cuadrojugar"
-        android:layout_width="322dp"
-        android:layout_height="278dp"
-        android:layout_margin="16dp"
-        android:background="@drawable/cuadro_transparente"
-        android:orientation="vertical"
-        android:padding="16dp"
+    <Button
+        android:id="@+id/btnSalir"
+        android:layout_width="133dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="84dp"
+        android:backgroundTint="@color/naranja"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="@string/salir"
+        android:textColor="@color/purpledark"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logoImage"
-        app:layout_constraintVertical_bias="0.427" />
-
-
-    <ImageView
-        android:id="@+id/logoImage"
-        android:layout_width="413dp"
-        android:layout_height="60dp"
-        android:contentDescription="@string/logo"
-        android:src="@drawable/letrasfastbrain"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.028" />
-
-    <FrameLayout
-        android:id="@+id/diceButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/logoImage"
-        android:layout_marginTop="200dp">
-
-    </FrameLayout>
-
-    <ImageButton
-        android:id="@+id/dice2"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_gravity="end|center_vertical"
-        android:background="@null"
-        android:contentDescription="@string/dado_2"
-        android:src="@drawable/dado2"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="144dp"
-        tools:layout_editor_absoluteY="578dp" />
-
-    <ImageButton
-        android:id="@+id/dice1"
-        android:layout_width="87dp"
-        android:layout_height="80dp"
-        android:layout_gravity="start|center_vertical"
-        android:background="@null"
-        android:backgroundTint="@null"
-        android:contentDescription="@string/dado_1"
-        android:scaleType="center"
-        android:src="@drawable/dado1"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="179dp"
-        tools:layout_editor_absoluteY="597dp" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

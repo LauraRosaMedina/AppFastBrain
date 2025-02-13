@@ -96,21 +96,21 @@
             app:layout_constraintTop_toBottomOf="@+id/icono_videogame" />
 
         <EditText
-            android:id="@+id/edittextsala"
+            android:id="@+id/textViewCodigoSala"
             android:layout_width="170dp"
             android:layout_height="60dp"
+            android:background="@drawable/edittext_bordermalva"
             android:drawablePadding="8dp"
-            android:background="@drawable/edittext_border"
             android:hint="@string/textocodigo"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textColorHint="@color/malva"
-            android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cuadro_crear_sala"
-            app:layout_constraintVertical_bias="0.554"
+            app:layout_constraintVertical_bias="0.473"
             tools:ignore="MissingConstraints" />
 
         <ImageView
@@ -172,7 +172,7 @@
 
     <!-- Botón con ícono a la izquierda del texto en el cuadro duplicado -->
     <Button
-        android:id="@+id/botoncrearsala_duplicado"
+        android:id="@+id/boton_unirSala"
         android:layout_width="230dp"
         android:layout_height="65dp"
         android:backgroundTint="@color/white"

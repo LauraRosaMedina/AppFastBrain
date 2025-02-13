@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/animated_background"
+    android:padding="16dp">
+
+    <!-- Cuadro para la pregunta -->
+
+
+    <!-- Texto de la pregunta -->
+
+    <!-- Opciones de respuesta -->
+
+
+    <ImageView
+        android:id="@+id/logoSala"
+        android:layout_width="225dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/logopaginacarga"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- Categoría -->
+
+    <!-- Temporizador -->
+
+    <!-- Botón Siguiente -->
+
+    <TextView
+        android:id="@+id/preguntaTextView"
+        android:layout_width="364dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="152dp"
+        android:background="@drawable/pregunta_border"
+        android:paddingBottom="30dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/opcion3"
+        android:layout_width="351dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="220dp"
+        android:background="@drawable/respuesta_border"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/opcion1"
+        android:layout_width="351dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="248dp"
+        android:background="@drawable/respuesta_border"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/opcion2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.578" />
+
+    <TextView
+        android:id="@+id/opcion4"
+        android:layout_width="351dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="140dp"
+        android:background="@drawable/respuesta_border"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.464"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/opcion2"
+        android:layout_width="351dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="308dp"
+        android:background="@drawable/respuesta_border"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="92dp"
+        android:text="@string/temporizador"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="23sp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/turnoTextView"
+        android:layout_width="356dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.434"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

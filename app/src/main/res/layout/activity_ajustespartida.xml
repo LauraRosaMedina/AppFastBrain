@@ -223,9 +223,9 @@
 
 
     <Button
-        android:id="@+id/btn_crear_codigo"
-        android:layout_width="179dp"
-        android:layout_height="51dp"
+        android:id="@+id/btn_crear_partida"
+        android:layout_width="289dp"
+        android:layout_height="49dp"
         android:layout_marginTop="20dp"
         android:backgroundTint="@color/white"
         android:text="@string/codigo"
