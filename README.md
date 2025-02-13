@@ -74,8 +74,9 @@ FastBrain implementa un modelo de arquitectura cliente/servidor para gestionar l
 
 ### Enlaces Relevantes
 
-[diagrama](https://docs.google.com/document/d/1CF8uj0QVe5bWVNxtwCUyPsgxawuLUAv9EURdut01XmA/edit?tab=t.0)
-[Manual de Usuario](https://www.behance.net/gallery/219134773/FastBrain-Android)
+- [Diagrama](https://docs.google.com/document/d/1CF8uj0QVe5bWVNxtwCUyPsgxawuLUAv9EURdut01XmA/edit?tab=t.0)
+- [Manual de Usuario](https://www.behance.net/gallery/219134773/FastBrain-Android)
+- [Documentación App FastBrain](https://docs.google.com/document/d/1_owfrJb_FkfqrTOzANhRUvSM1FwPEwSyEW7WRkQi65k/edit?usp=drive_link)
 
 ### Autores
 
