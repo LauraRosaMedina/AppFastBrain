@@ -97,6 +97,7 @@ En este caso, los jugadores no podrán conectarse con el código proporcionado.
 - [Diagrama](https://docs.google.com/document/d/1CF8uj0QVe5bWVNxtwCUyPsgxawuLUAv9EURdut01XmA/edit?tab=t.0)
 - [Manual de Usuario](https://www.behance.net/gallery/219134773/FastBrain-Android)
 - [Documentación App FastBrain: Programación Multimedia de Dispositivos Móviles y Programación de Servicios y Procesos](https://docs.google.com/document/d/1_owfrJb_FkfqrTOzANhRUvSM1FwPEwSyEW7WRkQi65k/edit?usp=drive_link)
+- [Documentación App FastBrain: Desarrollo de Interfaces](https://docs.google.com/document/d/1GqLPZmRU-LEpmmTsxyAv7zDofGzY6Vfnur8QK1XNOgk/edit?usp=drive_link)
 
 ### 👱‍♀️ Autores
 
